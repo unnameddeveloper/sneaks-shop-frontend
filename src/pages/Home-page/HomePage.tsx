@@ -49,8 +49,6 @@ const HomePage = () => {
       behavior: 'smooth'});
   }
 
-  // https://sneaks-shop-frontend.onrender.com
-
   return (
     <>
     <div className="homediv">
@@ -61,7 +59,7 @@ const HomePage = () => {
           </svg>
         </div>
     </div>
-    <div className="username_vidget"><span data-type="username">Hello! @{store.username}</span></div>
+    <div className="username_vidget"><div className="username">Hello! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
     <div className="vidgets">
       <div className="marketing_vidget">
         <img src="https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/shoes.png" alt="img"/>
