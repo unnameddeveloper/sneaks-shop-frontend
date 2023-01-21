@@ -90,16 +90,17 @@
   transform: translate(0px, -60px);
 }
 .itempage .itemmenu .dots .dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   background-color: #bdd2ff;
-  border-radius: 50%;
+  border-radius: 30px;
   margin-left: 10px;
   transition: all, 0.3s, all, 0.3s;
 }
 .itempage .itemmenu .dots .dot_active {
   background-color: #80a8ff;
   transform: scale(1.2);
+  width: 12px;
 }
 .itempage .itemmenu .itemname {
   width: 100%;
@@ -122,6 +123,17 @@
   margin-top: 25px;
   font-size: 20px;
   line-height: 25px;
+}
+.itempage .itemmenu .choosesize_vidget {
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-size: 17px;
+  color: rgba(0, 0, 0, 0.428);
+  border-radius: 20px;
+  background-color: #f6f5f8;
+  margin-top: 20px;
 }
 .itempage .itemmenu .sizes {
   width: 100%;

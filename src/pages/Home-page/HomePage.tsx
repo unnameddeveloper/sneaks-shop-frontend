@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { tg, WebApp } from '../../hooks/useTelegram';
+import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import Item from '../../components/Item';
+import AOS from 'aos'
 import { Context } from '../../index';
 import './styles/style.css';
 
@@ -15,6 +16,10 @@ const HomePage = () => {
   useEffect(() => {
     store.setUsername(window?.Telegram?.WebApp?.initDataUnsafe?.user?.username)
   }, [store])
+
+  useEffect(() => {
+    AOS.init()
+  })
 
   const ItemArray = [
     { id: "1", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/1.webp", name: "Zoom Freak 4 NRG", price: 199},
@@ -38,7 +43,6 @@ const HomePage = () => {
       left: 0,
       behavior: 'smooth'});
   }
-
   const scrollUp = () => {
     var target = document.getElementById("filtertarget");
     var targetPosition = target.getBoundingClientRect();
@@ -59,13 +63,13 @@ const HomePage = () => {
           </svg>
         </div>
     </div>
-    <div className="username_vidget"><div className="username">Hello! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
+    <div className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Hello! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
     <div className="vidgets">
-      <div className="marketing_vidget">
+      <div className="marketing_vidget" data-aos="fade-right" data-aos-duration="600">
         <img src="https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/shoes.png" alt="img"/>
       </div>
       <div className="vidgets_2">
-        <div className="busket_vidget">
+        <div className="busket_vidget" data-aos="fade-left" data-aos-duration="1000">
           <Link to="/busket" className='busket'>
             <svg fill="#80a8ff" height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
               viewBox="0 0 512 512" xmlSpace="preserve">
@@ -123,13 +127,13 @@ const HomePage = () => {
             </svg>
           </Link>
         </div>
-        <div className="go_vidget" onClick={scroll}>Go shopping</div>
+        <div className="go_vidget" onClick={scroll} data-aos="fade-left" data-aos-duration="1000">Go shopping</div>
       </div>
     </div>
     <div className="homepage">
       <div className="filter" id='filtertarget'>All categories:</div>
       { ItemArray.map(item => (<Item product={item}/>)) }
-      <div className="scrollup" onClick={scrollUp}>Scroll up</div>
+      <div className="scrollup" onClick={scrollUp} data-aos="fade-up" data-aos-duration="500">Scroll up</div>
     </div>
     <Footer/>
     </>

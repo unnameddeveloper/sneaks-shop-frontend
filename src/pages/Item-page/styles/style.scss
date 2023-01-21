@@ -3,6 +3,7 @@ $transition: all, 0.3s, all, 0.3s;
 $transition2: all, 0.1s, all, 0.1s;
 $color_1: #80a8ff;
 $color_2: #bdd2ff;
+$color_3: #f6f5f8;
 
 .itempage {
     width: 100%;
@@ -93,16 +94,17 @@ $color_2: #bdd2ff;
             align-items: center;
             transform: translate(0px, -60px);
             .dot {
-                width: 5px;
-                height: 5px;
+                width: 6px;
+                height: 6px;
                 background-color: $color_2;
-                border-radius: 50%;
+                border-radius: 30px;
                 margin-left: 10px;
                 transition: $transition;
             }
             .dot_active {
                 background-color: $color_1;
                 transform: scale(1.2);
+                width: 12px;
             }
         }
         .itemname {
@@ -126,6 +128,17 @@ $color_2: #bdd2ff;
             margin-top: 25px;
             font-size: 20px;
             line-height: 25px;
+        }
+        .choosesize_vidget {
+            width: 100%;
+            height: 40px;
+            padding-left: 15px;
+            padding-top: 10px;
+            font-size: 17px;
+            color: rgba(0, 0, 0, 0.428);
+            border-radius: 20px;
+            background-color: $color_3;
+            margin-top: 20px;
         }
         .sizes {
             width: 100%;

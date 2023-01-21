@@ -3,11 +3,22 @@ export interface IProduct {
     image: string,
     name: string,
     price: number,
+    sizes: number[]
+    descritpion: string,
+}
+
+export interface IProductInCart {
+    id: string,
+    image: string,
+    name: string,
+    price: number,
+    size: number,
     descritpion: string,
 }
 
 export interface IUser {
     username: string,
-    accessToken: string,
-    refreshToken: string,
+    shoppingCart: IProductInCart[],
+    email: string,
+    phoneNumber: string,
 }

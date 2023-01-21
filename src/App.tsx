@@ -3,7 +3,7 @@ import ItemPage from './pages/Item-page/ItemPage';
 import HomePage from './pages/Home-page/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import React, { useContext, useEffect } from 'react';
-import { WebApp, tg } from './hooks/useTelegram';
+import { tg } from './hooks/useTelegram';
 import './styles/App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     tg.ready()
   }, [])
-
+  
   return (
     <div className="container">
       <Routes>

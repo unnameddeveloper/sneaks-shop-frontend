@@ -1,4 +1,5 @@
-const { WebApp } = require('@grammyjs/web-app');
+// const { WebApp } = require('@grammyjs/web-app');
+// npm i @grammyjs/web-app
 
 // const tg = WebApp
 const tg = window.Telegram.WebApp
@@ -19,4 +20,4 @@ const onToggleButton = () => {
     }
 }
 
-module.exports = { onClose, onToggleButton, user, tg, queryId, WebApp } 
+module.exports = { onClose, onToggleButton, user, tg, queryId } 
