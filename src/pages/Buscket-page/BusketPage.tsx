@@ -1,4 +1,3 @@
-import PaymentsService from '../../services/payment-service';
 import { useContext, useEffect, useState } from 'react';
 import UserService from '../../services/user-service';
 import CartItem from '../../components/CartItem';
@@ -30,19 +29,19 @@ const BusketPage = () => {
     }
   }, [user])
 
-  // Функция при нажатии 
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', async () => {
-      const invoiceLink = await PaymentsService.createInvoiceLink()
-      await tg.openInvoice(invoiceLink, async () => {})
-    })
-    return () => {
-        tg.offEvent('mainButtonClicked', async () => {
-          const invoiceLink = await PaymentsService.createInvoiceLink()
-          await tg.openInvoice(invoiceLink, async () => {})
-        })
-    }
-  }, [])
+  // // Функция при нажатии 
+  // useEffect(() => {
+  //   tg.onEvent('mainButtonClicked', async () => {
+  //     const invoiceLink = await PaymentsService.createInvoiceLink()
+  //     await tg.openInvoice(invoiceLink, async () => {})
+  //   })
+  //   return () => {
+  //       tg.offEvent('mainButtonClicked', async () => {
+  //         const invoiceLink = await PaymentsService.createInvoiceLink()
+  //         await tg.openInvoice(invoiceLink, async () => {})
+  //       })
+  //   }
+  // }, [])
 
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
@@ -57,7 +56,7 @@ const BusketPage = () => {
   return (
     <>
       <div className="busketpage">
-        <div className="header"><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
+        <div className="header" onClick={store.test}><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
         <div className="shoppingcart_items">
           <div className="cartitem">
             <div className="cartitem_image"></div>
