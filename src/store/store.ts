@@ -1,5 +1,6 @@
-import { makeAutoObservable } from 'mobx'
 import PaymentsService from '../services/payment-service';
+import UserService from '../services/user-service';
+import { makeAutoObservable } from 'mobx'
 
 export default class Store {
     isLoading = false
@@ -17,9 +18,13 @@ export default class Store {
         this.username = type
     };
 
-    async test() {
+    async createInvoiceLink() {
         const invoiceLink = await PaymentsService.createInvoiceLink()
         console.log(invoiceLink.data.result)
         return invoiceLink.data.result
+    }
+
+    async getUser() {
+
     }
 }

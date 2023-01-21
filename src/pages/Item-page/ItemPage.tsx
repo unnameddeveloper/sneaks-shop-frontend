@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from 'react';
-import UserSrvice from '../../services/user-service';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IProduct } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
@@ -84,7 +83,6 @@ const ItemPage = () => {
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
       // Сначала делаем запрос на добавление в корзину
-      const addToBasket = await UserSrvice.addToBasket(product, store.username)
       return navigate('/busket')
     })
     return () => {

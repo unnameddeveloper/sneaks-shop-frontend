@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import Item from '../../components/Item';
-import AOS from 'aos'
 import { Context } from '../../index';
 import './styles/style.css';
+import AOS from 'aos'
 
 
 const HomePage = () => {

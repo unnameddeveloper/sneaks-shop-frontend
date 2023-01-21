@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import UserService from '../../services/user-service';
 import CartItem from '../../components/CartItem';
 import { tg } from '../../hooks/useTelegram';
 import { IUser } from '../../types/types';
@@ -14,7 +13,7 @@ const BusketPage = () => {
   // Получаем информацию о добавленных товарах в корзину
   useEffect(() => {
     const getUser = async () => {
-      const User =  await UserService.getUser(store.username)
+      // const User = await store.getUser
       // setUser(User)
     }
     getUser()
@@ -32,13 +31,13 @@ const BusketPage = () => {
   // Функция при нажатии 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
-      const invoiceLink = await store.test()
+      const invoiceLink = await store.createInvoiceLink()
       console.log("invoiceLink: " + invoiceLink);
       await tg.openInvoice(invoiceLink, async () => {})
     })
     return () => {
         tg.offEvent('mainButtonClicked', async () => {
-          const invoiceLink = await store.test()
+          const invoiceLink = await store.createInvoiceLink()
           await tg.openInvoice(invoiceLink, async () => {})
         })
     }
@@ -50,15 +49,16 @@ const BusketPage = () => {
         console.log(res);
         return alert("Payment error")
       }
+      if (res.status === "paid")
       console.log(res);
-      return alert("Status: " + res.status)
+      return alert("Payment successfull")
     })
   })
 
   return (
     <>
       <div className="busketpage">
-        <div className="header" onClick={store.test}><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
+        <div className="header"><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
         <div className="shoppingcart_items">
           <div className="cartitem">
             <div className="cartitem_image"></div>
