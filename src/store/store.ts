@@ -19,7 +19,7 @@ export default class Store {
 
     async test() {
         const invoiceLink = await PaymentsService.createInvoiceLink()
-        console.log(invoiceLink.data);
-        alert(invoiceLink.data)
-      }
+        console.log(invoiceLink.data.result)
+        return invoiceLink.data.result
+    }
 }

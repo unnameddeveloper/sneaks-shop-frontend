@@ -29,19 +29,19 @@ const BusketPage = () => {
     }
   }, [user])
 
-  // // Функция при нажатии 
-  // useEffect(() => {
-  //   tg.onEvent('mainButtonClicked', async () => {
-  //     const invoiceLink = await PaymentsService.createInvoiceLink()
-  //     await tg.openInvoice(invoiceLink, async () => {})
-  //   })
-  //   return () => {
-  //       tg.offEvent('mainButtonClicked', async () => {
-  //         const invoiceLink = await PaymentsService.createInvoiceLink()
-  //         await tg.openInvoice(invoiceLink, async () => {})
-  //       })
-  //   }
-  // }, [])
+  // Функция при нажатии 
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', async () => {
+      const invoiceLink = await store.test()
+      await tg.openInvoice(invoiceLink, async () => {})
+    })
+    return () => {
+        tg.offEvent('mainButtonClicked', async () => {
+          const invoiceLink = await store.test()
+          await tg.openInvoice(invoiceLink, async () => {})
+        })
+    }
+  }, [store])
 
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
