@@ -33,6 +33,7 @@ const BusketPage = () => {
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
       const invoiceLink = await store.test()
+      console.log("invoiceLink: " + invoiceLink);
       await tg.openInvoice(invoiceLink, async () => {})
     })
     return () => {
@@ -45,11 +46,11 @@ const BusketPage = () => {
 
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
-      console.log(res);
-      if (res.status === "cancelled" || "failed") {
-        return alert("Payment failed")
+      if (res.status !== "paid") {
+        return alert(JSON.parse(res))
       }
-      return alert("Payment success")
+      alert(res)
+      return alert("Payment success" + res.status)
     })
   })
 
