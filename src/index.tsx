@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import Store from './store/store'
@@ -14,10 +14,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-      <Context.Provider value={{ store }}>
-        <BrowserRouter>
-          <App/>
-        </BrowserRouter>
-      </Context.Provider>
+        <Router>
+          <Context.Provider value={{ store }}>
+            <App/>
+          </Context.Provider>
+        </Router>
   </React.StrictMode>
 );
