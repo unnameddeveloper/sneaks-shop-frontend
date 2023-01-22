@@ -19,9 +19,16 @@ export default class Store {
     };
 
     async createInvoiceLink() {
-        const invoiceLink = await PaymentsService.createInvoiceLink()
-        console.log(invoiceLink.data.result)
-        return invoiceLink.data.result
+        this.isLoading = true
+        try {
+            const invoiceLink = await PaymentsService.createInvoiceLink()
+            console.log(invoiceLink.data.result)
+            return invoiceLink.data.result 
+        } catch (error) {
+            return console.log(error)
+        } finally {
+            this.isLoading = false
+        }
     }
 
     async getUser() {

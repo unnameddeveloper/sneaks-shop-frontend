@@ -46,14 +46,19 @@ const BusketPage = () => {
   // Слушатель события
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
-      console.log(typeof res.status);
       console.log(res);
       return alert(`Status: ${res.status}`)
     })
     return () => {
       window.Telegram.WebApp.offEvent('invoiceClosed', (res: any) => {
+        console.log(res);
+        return alert(`Status: ${res.status}`)
       })
     }
+  })
+
+  useEffect(() => {
+    tg.MainButton.showProgress(store.isLoading)
   })
 
   return (
