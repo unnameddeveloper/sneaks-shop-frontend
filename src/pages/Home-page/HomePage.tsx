@@ -15,6 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     store.setUsername(window?.Telegram?.WebApp?.initDataUnsafe?.user?.username)
+    tg.MainButton.hide()
   }, [store])
 
   useEffect(() => {

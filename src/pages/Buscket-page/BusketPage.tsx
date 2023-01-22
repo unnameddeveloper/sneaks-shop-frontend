@@ -43,15 +43,12 @@ const BusketPage = () => {
     }
   }, [store])
 
+  // Слушатель события
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
-      if (res.status !== "paid") {
-        console.log(res);
-        return alert("Payment error")
-      }
-      if (res.status === "paid")
+      console.log(typeof res.status);
       console.log(res);
-      return alert("Payment successfull")
+      return alert(`Status: ${res.status}`)
     })
   })
 
