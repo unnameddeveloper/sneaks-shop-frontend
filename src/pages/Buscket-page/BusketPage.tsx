@@ -18,12 +18,12 @@ const BusketPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (store.isLoading) {
+    if (store.isLoading === true) {
       setLoadingModal(true)
-      tg.MainButton.hide()
+      return tg.MainButton.hide()
     }
     
-    if (!store.isLoading) {
+    if (loadingModal === false) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: "Оплатить"
