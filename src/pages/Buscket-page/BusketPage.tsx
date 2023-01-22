@@ -11,52 +11,44 @@ import LoadingComponent from '../../components/Loading';
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
-  const [loadingModal, setLoadingModal] = useState<boolean>(store.isLoading)
+  const [loadingModal, setLoadingModal] = useState<boolean>()
 
   // Получаем информацию о добавленных товарах в корзину
   useEffect(() => {
   }, [])
 
   useEffect(() => {
+    if (store.isLoading) {
+      setLoadingModal(true)
+      tg.MainButton.setParams({
+        text: "Загрузка.."
+      })
+    }
+  }, [store])
+  
+  useEffect(() => {
     if (true) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: "Оплатить"
       })
-    }
-    if (store.isLoading === true) {
-      tg.MainButton.setParams({
-        text: "Загрузка.."
-      })
-    }
-  }, [user, store])
+    } 
+  }, [user])
 
   // Функция при нажатии 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
-      store.setLoading(true)
-      try {
-        const invoiceLink = await store.createInvoiceLink()
-        console.log("invoiceLink: " + invoiceLink);
-        return await tg.openInvoice(invoiceLink, async () => {})
-      } catch (error) {
-        return console.log(error);
-      } finally {
-        store.setLoading(false)
-      }
+      setLoadingModal(true)
+      const invoiceLink = await store.createInvoiceLink()
+      console.log("invoiceLink: " + invoiceLink);
+      await tg.openInvoice(invoiceLink, async () => {})
     })
     return () => {
       tg.offEvent('mainButtonClicked', async () => {
-        store.setLoading(true)
-        try {
-          const invoiceLink = await store.createInvoiceLink()
-          console.log("invoiceLink: " + invoiceLink);
-          return await tg.openInvoice(invoiceLink, async () => {})
-        } catch (error) {
-          return console.log(error);
-        } finally {
-          store.setLoading(false)
-        }
+        setLoadingModal(true)
+        const invoiceLink = await store.createInvoiceLink()
+        console.log("invoiceLink: " + invoiceLink);
+        return await tg.openInvoice(invoiceLink, async () => {})
       })
     }
   }, [store])
@@ -64,11 +56,13 @@ const BusketPage: FC = () => {
   // Слушатель события
   useEffect(() => {
     window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
+      setLoadingModal(false)
       alert(`Status: ${res.status}`)
       return console.log(res);
     })
     return () => {
       window.Telegram.WebApp.offEvent('invoiceClosed', (res: any) => {
+        setLoadingModal(false)
         alert(`Status: ${res.status}`)
         return console.log(res);
       })
