@@ -18,7 +18,7 @@ const BusketPage: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (user?.shoppingCart.length > 0) {
+    if (true) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: "Оплатить"
