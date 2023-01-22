@@ -15,13 +15,13 @@ const App: FC = () => {
   }, [])
   
   return (
-    <div className="container">
+    <>
       <Routes>
         <Route path={'/'} element={<HomePage/>}/>
         <Route path={'/busket'} element={<BusketPage/>}/>
         <Route path={'/item/:id'} element={<ItemPage/>}/> 
       </Routes>
-    </div>
+    </>
   );
 }
 
