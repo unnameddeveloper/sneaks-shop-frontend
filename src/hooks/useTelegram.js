@@ -1,5 +1,6 @@
 // const { WebApp } = require('@grammyjs/web-app');
 // npm i @grammyjs/web-app
+// npm uninstall @grammyjs/web-app
 
 // const tg = WebApp
 const tg = window.Telegram.WebApp
