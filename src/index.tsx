@@ -14,10 +14,10 @@ export const Context = createContext<State>({ store })
 
 root.render(
   <React.StrictMode>
-    <Context.Provider value={{ store }}>
       <BrowserRouter>
-        <App />
+        <Context.Provider value={{ store }}>
+          <App />
+        </Context.Provider>
       </BrowserRouter>
-    </Context.Provider>
   </React.StrictMode>
 );

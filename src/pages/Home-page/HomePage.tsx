@@ -71,7 +71,7 @@ const HomePage = () => {
       </div>
       <div className="vidgets_2">
         <div className="busket_vidget" data-aos="fade-left" data-aos-duration="1000">
-          <a href="/busket" className='busket'>
+          <Link to="/busket" className='busket'>
             <svg fill="#80a8ff" height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" 
               viewBox="0 0 512 512" xmlSpace="preserve">
             <g>
@@ -126,7 +126,7 @@ const HomePage = () => {
               </g>
             </g>
             </svg>
-          </a>
+          </Link>
         </div>
         <div className="go_vidget" onClick={scroll} data-aos="fade-left" data-aos-duration="1000">Go shopping</div>
       </div>
