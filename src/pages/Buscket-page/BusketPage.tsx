@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
 import CartItem from '../../components/CartItem';
 import { tg } from '../../hooks/useTelegram';
 import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
+import { observer } from 'mobx-react';
 import './styles/style.css';
 
-const BusketPage = () => {
+const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
 
@@ -114,4 +115,4 @@ const BusketPage = () => {
   );
 }
 
-export default BusketPage;
+export default observer(BusketPage);

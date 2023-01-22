@@ -1,12 +1,8 @@
 import { IProduct, IProductInCart } from '../types/types';
 import { Routes, Route, Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 
-interface IProps {
-    product: IProductInCart
-}
-
-const CartItem = ({ product }: IProps) => {
+const CartItem = ({ product }) => {
 
   return (
     <>
@@ -22,4 +18,4 @@ const CartItem = ({ product }: IProps) => {
   );
 }
 
-export default CartItem;
+export default CartItem

@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
 // import React, { useState } from 'react';
+import { IProduct } from '../types/types';
+import { Link } from 'react-router-dom';
+import { observable } from 'mobx';
+import { FC } from 'react';
 
-const Item = ({ product }) => {
+const Item = ({product}) => {
 
   const scrollup = () => {
       window.scrollTo(0, 0)

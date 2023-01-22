@@ -1,9 +1,10 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IProduct } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
 import { Context } from '../../index';
+import { observer } from 'mobx-react';
 import './styles/style.css';
 import './styles/sizes.css'
 import 'swiper/css'
@@ -33,7 +34,7 @@ const SizeArray = [
   { size: "44" },
 ]
 
-const ItemPage = () => {
+const ItemPage: FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { store } = useContext(Context)
@@ -129,4 +130,4 @@ const ItemPage = () => {
   );
 }
 
-export default ItemPage;
+export default observer(ItemPage);

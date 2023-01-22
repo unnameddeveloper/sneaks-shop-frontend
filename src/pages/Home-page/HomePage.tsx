@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import Item from '../../components/Item';
 import { Context } from '../../index';
+import { observer } from 'mobx-react';
 import './styles/style.css';
 import AOS from 'aos'
 
 
-const HomePage = () => {
+const HomePage: FC = () => {
   const [addedItems, setAddedItem] = useState([])
   const { store } = useContext(Context)
   const navigate = useNavigate()
@@ -141,4 +142,4 @@ const HomePage = () => {
   );
 }
 
-export default HomePage;
+export default observer(HomePage);
