@@ -50,6 +50,10 @@ const BusketPage = () => {
       console.log(res);
       return alert(`Status: ${res.status}`)
     })
+    return () => {
+      window.Telegram.WebApp.offEvent('invoiceClosed', (res: any) => {
+      })
+    }
   })
 
   return (
