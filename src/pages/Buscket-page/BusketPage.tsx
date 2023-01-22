@@ -20,20 +20,16 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (store.isLoading) {
       setLoadingModal(true)
-      tg.MainButton.setParams({
-        text: "Загрузка.."
-      })
+      tg.MainButton.hide()
     }
-  }, [store])
-  
-  useEffect(() => {
-    if (true) {
+    
+    if (!store.isLoading) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: "Оплатить"
       })
     } 
-  }, [user])
+  }, [store])
 
   // Функция при нажатии 
   useEffect(() => {

@@ -21,7 +21,6 @@ const LoadingComponent = ({active, setActive}) => {
         <div className="bar11"></div>
         <div className="bar12"></div>
       </div>
-      <div className="loadingtext">Загрузка...</div>
     </div>
     </>
   );
