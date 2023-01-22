@@ -1,5 +1,5 @@
 import PaymentsService from '../services/payment-service';
-import UserService from '../services/user-service';
+// import UserService from '../services/user-service';
 import { makeAutoObservable } from 'mobx'
 
 export default class Store {

@@ -1,26 +1,26 @@
 import { FC, useContext, useEffect, useState } from 'react';
-import CartItem from '../../components/CartItem';
+import LoadingComponent from '../../components/Loading';
+// import CartItem from '../../components/CartItem';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
-import { IUser } from '../../types/types';
+// import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css';
-import LoadingComponent from '../../components/Loading';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
-  const [user, setUser] = useState<IUser>()
+  // const [user, setUser] = useState<IUser>()
   const [loadingModal, setLoadingModal] = useState<boolean>(false)
 
   // Получаем информацию о добавленных товарах в корзину
-  useEffect(() => {
-  }, [])
+  // useEffect(() => {
+  // }, [])
 
   useEffect(() => {
     if (store.isLoading === true) {
       setLoadingModal(true)
-      return tg.MainButton.hide()
+      tg.MainButton.hide()
     }
     
     if (loadingModal === false) {
@@ -44,23 +44,23 @@ const BusketPage: FC = () => {
         setLoadingModal(true)
         const invoiceLink = await store.createInvoiceLink()
         console.log("invoiceLink: " + invoiceLink);
-        return await tg.openInvoice(invoiceLink, async () => {})
+        await tg.openInvoice(invoiceLink, async () => {})
       })
     }
   }, [store])
 
   // Слушатель события
   useEffect(() => {
-    window.Telegram.WebApp.onEvent('invoiceClosed', (res: any) => {
+    tg.onEvent('invoiceClosed', (res: any) => {
       setLoadingModal(false)
+      console.log(res);
       alert(`Status: ${res.status}`)
-      return console.log(res);
     })
     return () => {
-      window.Telegram.WebApp.offEvent('invoiceClosed', (res: any) => {
+      tg.offEvent('invoiceClosed', (res: any) => {
         setLoadingModal(false)
+        console.log(res);
         alert(`Status: ${res.status}`)
-        return console.log(res);
       })
     }
   }, [])
