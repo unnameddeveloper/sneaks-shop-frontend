@@ -1,10 +1,10 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import CartItem from '../../components/CartItem';
 import { tg } from '../../hooks/useTelegram';
+import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
-import { observer } from 'mobx-react';
 import './styles/style.css';
 
 const BusketPage: FC = () => {

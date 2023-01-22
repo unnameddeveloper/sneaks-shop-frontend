@@ -3,8 +3,8 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { IProduct } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
+import { observer } from 'mobx-react-lite';
 import { Context } from '../../index';
-import { observer } from 'mobx-react';
 import './styles/style.css';
 import './styles/sizes.css'
 import 'swiper/css'

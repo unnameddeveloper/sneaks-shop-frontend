@@ -1,8 +1,8 @@
+import { BrowserRouter } from 'react-router-dom';
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import Store from './store/store'
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 interface State { store: Store }
 export const store = new Store()

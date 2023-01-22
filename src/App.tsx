@@ -3,11 +3,12 @@ import ItemPage from './pages/Item-page/ItemPage';
 import HomePage from './pages/Home-page/HomePage';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { tg } from './hooks/useTelegram';
 import './styles/App.css';
+import { observer } from 'mobx-react-lite';
 
-function App() {
+const App: FC = () => {
 
   useEffect(() => {
     tg.ready()
@@ -24,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

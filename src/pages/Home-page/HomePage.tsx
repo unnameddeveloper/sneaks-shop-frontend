@@ -2,9 +2,9 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
+import { observer } from 'mobx-react-lite';
 import Item from '../../components/Item';
 import { Context } from '../../index';
-import { observer } from 'mobx-react';
 import './styles/style.css';
 import AOS from 'aos'
 
