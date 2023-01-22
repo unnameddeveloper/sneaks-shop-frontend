@@ -6,41 +6,57 @@ import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css';
+import LoadingComponent from '../../components/Loading';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
+  const [loadingModal, setLoadingModal] = useState<boolean>(store.isLoading)
 
   // Получаем информацию о добавленных товарах в корзину
   useEffect(() => {
-    const getUser = async () => {
-      // const User = await store.getUser
-      // setUser(User)
-    }
-    getUser()
-  }, [store])
+  }, [])
 
   useEffect(() => {
-    if (true) {
+    if (user?.shoppingCart.length > 0) {
       tg.MainButton.show()
       tg.MainButton.setParams({
-        text: "Оплатить $339"
+        text: "Оплатить"
       })
     }
-  }, [user])
+    if (store.isLoading === true) {
+      tg.MainButton.setParams({
+        text: "Загрузка.."
+      })
+    }
+  }, [user, store])
 
   // Функция при нажатии 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
-      const invoiceLink = await store.createInvoiceLink()
-      console.log("invoiceLink: " + invoiceLink);
-      return await tg.openInvoice(invoiceLink, async () => {})
-    })
-    return () => {
-      tg.offEvent('mainButtonClicked', async () => {
+      store.setLoading(true)
+      try {
         const invoiceLink = await store.createInvoiceLink()
         console.log("invoiceLink: " + invoiceLink);
         return await tg.openInvoice(invoiceLink, async () => {})
+      } catch (error) {
+        return console.log(error);
+      } finally {
+        store.setLoading(false)
+      }
+    })
+    return () => {
+      tg.offEvent('mainButtonClicked', async () => {
+        store.setLoading(true)
+        try {
+          const invoiceLink = await store.createInvoiceLink()
+          console.log("invoiceLink: " + invoiceLink);
+          return await tg.openInvoice(invoiceLink, async () => {})
+        } catch (error) {
+          return console.log(error);
+        } finally {
+          store.setLoading(false)
+        }
       })
     }
   }, [store])
@@ -61,7 +77,8 @@ const BusketPage: FC = () => {
 
   return (
     <>
-      <div className="busketpage">
+      <LoadingComponent active={loadingModal} setActive={setLoadingModal}/>
+      <div className="busketpage" style={loadingModal ? { filter: "blur(4px)" } : { filter: "blur(0px)" }}>
         <div className="header"><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
         <div className="shoppingcart_items">
           <div className="cartitem">
