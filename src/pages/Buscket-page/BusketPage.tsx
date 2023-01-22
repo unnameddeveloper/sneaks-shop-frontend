@@ -33,9 +33,6 @@ const BusketPage = () => {
     tg.onEvent('mainButtonClicked', async () => {
       const invoiceLink = await store.createInvoiceLink()
       console.log("invoiceLink: " + invoiceLink);
-      window.Telegram.WebApp.MainButton.setParams({
-        text: ""
-      })
       window.Telegram.WebApp.MainButton.showProgress(true)
       return await tg.openInvoice(invoiceLink, async () => {})
     })
@@ -55,15 +52,11 @@ const BusketPage = () => {
       console.log(res);
       alert(`Status: ${res.status}`)
       window.Telegram.WebApp.MainButton.showProgress(false)
-      return window.Telegram.WebApp.MainButton.hideProgress()
+      if (window.Telegram.WebApp.isProgressVisible) {
+        return window.Telegram.WebApp.MainButton.hideProgress()
+      }
     })
   }, [])
-
-  useEffect(() => {
-    if (store.isLoading) {
-      window.Telegram.WebApp.MainButton.showProgress()
-    }
-  }, [store])
 
   return (
     <>
