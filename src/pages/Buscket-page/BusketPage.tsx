@@ -35,12 +35,6 @@ const BusketPage = () => {
       console.log("invoiceLink: " + invoiceLink);
       await tg.openInvoice(invoiceLink, async () => {})
     })
-    return () => {
-        tg.offEvent('mainButtonClicked', async () => {
-          const invoiceLink = await store.createInvoiceLink()
-          await tg.openInvoice(invoiceLink, async () => {})
-        })
-    }
   }, [store])
 
   // Слушатель события
@@ -49,17 +43,7 @@ const BusketPage = () => {
       console.log(res);
       return alert(`Status: ${res.status}`)
     })
-    return () => {
-      window.Telegram.WebApp.offEvent('invoiceClosed', (res: any) => {
-        console.log(res);
-        return alert(`Status: ${res.status}`)
-      })
-    }
-  })
-
-  useEffect(() => {
-    tg.MainButton.showProgress(store.isLoading)
-  })
+  }, [])
 
   return (
     <>
