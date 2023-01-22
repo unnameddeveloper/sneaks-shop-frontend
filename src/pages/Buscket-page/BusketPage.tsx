@@ -29,7 +29,7 @@ const BusketPage: FC = () => {
         text: "Оплатить"
       })
     } 
-  }, [store])
+  }, [store, loadingModal])
 
   // Функция при нажатии 
   useEffect(() => {
