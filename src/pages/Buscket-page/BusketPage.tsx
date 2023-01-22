@@ -11,7 +11,7 @@ import LoadingComponent from '../../components/Loading';
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
-  const [loadingModal, setLoadingModal] = useState<boolean>()
+  const [loadingModal, setLoadingModal] = useState<boolean>(false)
 
   // Получаем информацию о добавленных товарах в корзину
   useEffect(() => {
