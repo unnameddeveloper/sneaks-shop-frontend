@@ -1,0 +1,14 @@
+const ItemArray = [
+    { id: "1", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/1.webp", name: "Zoom Freak 4 NRG", price: 199, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }]},
+    { id: "2", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/2.webp", name: "Nike Air Force 1 '07", price: 380, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "3", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/3.webp", name: "Nike Court Vision Low", price: 189, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "4", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/4.webp", name: "Nike Blazer Mid '77", price: 499, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "5", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/5.webp", name: "Nike Air More Uptempo", price: 299, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "6", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/6.webp", name: "Air Jordan 1 Mid", price: 949, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "7", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/7.webp", name: "Nike Air More Uptempo", price: 388, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "8", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/8.webp", name: "Nike Air Max Alpha", price: 799, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "9", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/9..webp", name: "Zoom Freak 4", price: 189, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+    { id: "10", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/10.webp", name: "Jordan Series .06", price: 399, sizes: [{ size: "36" },{ size: "37" },{ size: "38" },{ size: "39" },{ size: "40" },{ size: "41" },{ size: "42" },{ size: "43" },{ size: "44" }] },
+]
+
+module.exports = ItemArray

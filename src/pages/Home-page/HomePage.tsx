@@ -1,18 +1,18 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { FC, useContext, useEffect } from 'react';
+import ItemArray from '../../assets/productArr'
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import { observer } from 'mobx-react-lite';
 import Item from '../../components/Item';
+import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css';
 import AOS from 'aos'
 
 
 const HomePage: FC = () => {
-  const [addedItems, setAddedItem] = useState([])
+  // const [addedItems, setAddedItem] = useState([])
   const { store } = useContext(Context)
-  const navigate = useNavigate()
 
   useEffect(() => {
     store.setUsername(window?.Telegram?.WebApp?.initDataUnsafe?.user?.username)
@@ -23,19 +23,6 @@ const HomePage: FC = () => {
   useEffect(() => {
     AOS.init()
   })
-
-  const ItemArray = [
-    { id: "1", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/1.webp", name: "Zoom Freak 4 NRG", price: 199},
-    { id: "2", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/2.webp", name: "Nike Air Force 1 '07", price: 380},
-    { id: "3", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/3.webp", name: "Nike Court Vision Low", price: 189},
-    { id: "4", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/4.webp", name: "Nike Blazer Mid '77", price: 499},
-    { id: "5", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/5.webp", name: "Nike Air More Uptempo", price: 299},
-    { id: "6", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/6.webp", name: "Air Jordan 1 Mid", price: 949},
-    { id: "7", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/7.webp", name: "Nike Air More Uptempo", price: 388},
-    { id: "8", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/8.webp", name: "Nike Air Max Alpha", price: 799},
-    { id: "9", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/9..webp", name: "Zoom Freak 4", price: 189},
-    { id: "10", image: "https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/10.webp", name: "Jordan Series .06", price: 399},
-  ]
 
   const scrollUp = () => {
     var target = document.getElementById("filtertarget");
@@ -57,7 +44,7 @@ const HomePage: FC = () => {
           </svg>
         </div>
     </div>
-    <div className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Hello! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
+    <div className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Привет! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
     <div className="vidgets">
       <div className="marketing_vidget" data-aos="fade-right" data-aos-duration="600">
         <img src="https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/shoes.png" alt="img"/>
@@ -129,9 +116,9 @@ const HomePage: FC = () => {
       </div>
     </div>
     <div className="homepage">
-      <div className="filter" id='filtertarget'>All categories:</div>
+      <div className="filter" id='filtertarget'>Рекомендации:</div>
       { ItemArray.map(item => (<Item product={item}/>)) }
-      <div className="scrollup" onClick={scrollUp} data-aos="fade-up" data-aos-duration="500">Scroll up</div>
+      <div className="scrollup" onClick={scrollUp} data-aos="fade-up" data-aos-duration="500">Вверх</div>
     </div>
     <Footer/>
     </>

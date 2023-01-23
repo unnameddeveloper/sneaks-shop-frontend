@@ -69,9 +69,12 @@
 }
 .accountpage .account_menu .account_menu_filed {
   display: inline-block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 40px;
   padding-left: 15px;
+  padding-right: 15px;
   padding-top: 10px;
   border-bottom: 1px solid rgba(230, 230, 230, 0.5490196078);
   color: #4680ff;
@@ -86,4 +89,21 @@
 }
 .accountpage .account_menu .account_menu_filed:active {
   background-color: rgba(206, 222, 255, 0.5019607843);
+}
+.accountpage .account_menu .account_menu_filed span {
+  margin-right: 15px;
+}
+.accountpage .account_menu .account_menu_filed .addbutn {
+  background-color: rgba(206, 222, 255, 0.5019607843);
+  width: 20px;
+  height: 20px;
+  border-radius: 40px;
+  text-align: center;
+  font-size: 12px;
+  padding-top: 3px;
+  transform: scale(1.3);
+  transition: all, 0.3s, all, 0.3s;
+}
+.accountpage .account_menu .account_menu_filed .addbutn:active {
+  transform: scale(1);
 }/*# sourceMappingURL=style.css.map */

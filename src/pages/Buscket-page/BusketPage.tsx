@@ -6,10 +6,12 @@ import { observer } from 'mobx-react-lite';
 // import { IUser } from '../../types/types';
 import { Context } from '../../index';
 import './styles/style.css';
+import CartItem from '../../components/CartItem';
+import { IUser } from '../../types/types';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
-  // const [user, setUser] = useState<IUser>()
+  const [user, setUser] = useState<IUser>()
   const [loadingModal, setLoadingModal] = useState<boolean>(false)
 
   // Получаем информацию о добавленных товарах в корзину
@@ -70,48 +72,9 @@ const BusketPage: FC = () => {
       <div className="busketpage" style={loadingModal ? { filter: "blur(4px)" } : { filter: "blur(0px)" }}>
         <div className="header"><span>My Cart</span></div>
         <div className="shoppingcart_items">
-          <div className="cartitem">
-            <div className="cartitem_image"></div>
-            <div className="item_info">
-              <div className="cartitem_name item_info_field">Product name</div>
-              <div className="cartitem_choosensize item_info_field">Choosen size</div>
-              <div className="cartitem_price item_info_field">Product price</div>
-            </div>
-            <div className="deleteitem_field"><div className="deleteitem_button"></div></div>
-            {/* <span>Delete</span> */}
-          </div>
-          <div className="cartitem">
-            <div className="cartitem_image"></div>
-            <div className="item_info">
-              <div className="cartitem_name item_info_field">Product name</div>
-              <div className="cartitem_choosensize item_info_field">Choosen size</div>
-              <div className="cartitem_price item_info_field">Product price</div>
-            </div>
-            <div className="deleteitem_field"><div className="deleteitem_button"></div></div>
-            {/* <span>Delete</span> */}
-          </div>
-          <div className="cartitem">
-            <div className="cartitem_image"></div>
-            <div className="item_info">
-              <div className="cartitem_name item_info_field">Product name</div>
-              <div className="cartitem_choosensize item_info_field">Choosen size</div>
-              <div className="cartitem_price item_info_field">Product price</div>
-            </div>
-            <div className="deleteitem_field"><div className="deleteitem_button"></div></div>
-            {/* <span>Delete</span> */}
-          </div>
-          <div className="cartitem">
-            <div className="cartitem_image"></div>
-            <div className="item_info">
-              <div className="cartitem_name item_info_field">Product name</div>
-              <div className="cartitem_choosensize item_info_field">Choosen size</div>
-              <div className="cartitem_price item_info_field">Product price</div>
-            </div>
-            <div className="deleteitem_field"><div className="deleteitem_button"></div></div>
-            {/* <span>Delete</span> */}
-          </div>
-          {/* {user.shoppingCart.map((product) => <CartItem product={product}></CartItem>)} */}
+          {!user?.shoppingCart ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem product={product}></CartItem>)}</>)}
         </div>
+        <div className="line"></div>
         <div className="invoicescore">
           <div className="extrainfo">Доставка: <span data-type="invoice">+ $29</span></div>
           <div className="extrainfo">Итого: <span data-type="invoice">$339</span></div>

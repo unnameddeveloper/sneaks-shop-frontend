@@ -2,6 +2,7 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import FavoritePage from './pages/FavoritePage/FavoritePage';
 import FooterMenu from './components/FooterMenu/footerMenu';
 import AccountPage from './pages/Account-page/AccountPage';
+import CatalogPage from './pages/Catalog-page/CatalogPage';
 import BusketPage from './pages/Buscket-page/BusketPage';
 import ItemPage from './pages/Item-page/ItemPage';
 import HomePage from './pages/Home-page/HomePage';
@@ -27,6 +28,7 @@ const App: FC = () => {
         <Route path={'/item/:id'} element={<ItemPage/>}/> 
         <Route path={'/account'} element={<AccountPage/>}/> 
         <Route path={'/favorite'} element={<FavoritePage/>}/> 
+        <Route path={'/catalog'} element={<CatalogPage/>}/> 
       </Routes>
       <FooterMenu active={footerMenu} setActive={setFooterMenu}/>
     </>

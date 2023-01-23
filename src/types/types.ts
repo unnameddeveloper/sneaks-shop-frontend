@@ -1,6 +1,6 @@
 export interface IProduct {
     id: string,
-    image: string,
+    image: string[],
     name: string,
     price: number,
     sizes: number[]
@@ -9,16 +9,17 @@ export interface IProduct {
 
 export interface IProductInCart {
     id: string,
-    image: string,
+    image: string[],
     name: string,
     price: number,
-    size: number,
+    choosenSize: number,
     descritpion: string,
 }
 
 export interface IUser {
     username: string,
     shoppingCart: IProductInCart[],
+    favoriteCart: IProductInCart[],
     email: string,
     phoneNumber: string,
 }

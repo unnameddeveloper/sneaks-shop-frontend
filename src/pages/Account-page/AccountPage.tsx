@@ -5,11 +5,12 @@ import { observer } from 'mobx-react-lite';
 import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css';
-import FooterMenu from '../../components/FooterMenu/footerMenu';
+import { IUser } from '../../types/types';
 
 
 const AccountPage: FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
+  const [user, setUser] = useState<IUser>()
   const { store } = useContext(Context)
 
   useEffect(() => {
@@ -24,13 +25,13 @@ const AccountPage: FC = () => {
       <div className="accountpage">
         <div className="header">
           <img src={store.userphoto} alt="userphoto" className='userphoto'/>
-          <div className="header_username">@username{store.username}</div>
+          <div className="header_username">@{store.username}</div>
         </div>
         <div className="account_menu">
             <h1 className='menu_name'>Аккаунт</h1>
             <div className="account_info">
-              <div className="account_info_phone account_menu_filed">Телефон: </div>
-              <div className="account_info_mail account_menu_filed">Почта: </div>
+              <div className="account_info_phone account_menu_filed"><span>Телефон:</span><span>{user?.phoneNumber ? <div>{user?.phoneNumber}</div> : <div className='addbutn'>+</div>}</span></div>
+              <div className="account_info_mail account_menu_filed"><span>Почта:</span><span>{user?.email ? <div>{user?.email}</div> : <div className='addbutn'>+</div>}</span></div>
             </div>
             <h1 className='menu_name'>Покупки</h1>
             <div className="account_menu_extra">
