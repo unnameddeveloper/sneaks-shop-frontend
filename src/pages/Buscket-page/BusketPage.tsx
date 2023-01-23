@@ -22,15 +22,15 @@ const BusketPage: FC = () => {
     if (store.isLoading === true) {
       setLoadingModal(true)
       tg.MainButton.hide()
-    }
-    
-    if (loadingModal === false) {
+    } else if (user?.shoppingCart.length > 0) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         text: "Оплатить"
       })
-    } 
-  }, [store, loadingModal])
+    } else if (user?.shoppingCart.length < 0) {
+      tg.MainButton.hide()
+    }
+  }, [store, user])
 
   // Функция при нажатии 
   useEffect(() => {
