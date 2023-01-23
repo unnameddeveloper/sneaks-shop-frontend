@@ -1,0 +1,22 @@
+.footermenu {
+  width: 95%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  background-color: #f6f5f8;
+  border-radius: 50px;
+  margin: 10px;
+  transition: all, 0.3s, all, 0.3s;
+  box-shadow: 0px 15px 35px rgba(157, 157, 157, 0.4196078431);
+  z-index: 30;
+}
+.footermenu .footermenu_link {
+  transition: all, 0.3s, all, 0.3s;
+}
+.footermenu .footermenu_link:active {
+  transform: scale(0.9);
+}/*# sourceMappingURL=style.css.map */

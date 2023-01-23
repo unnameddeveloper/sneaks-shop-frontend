@@ -1,0 +1,109 @@
+@font-face {
+    font-family: "Apple bold";
+    src: url('./fonts/SFProDisplay-Semibold.woff'), url('./fonts/SFProDisplay-Semibold.woff2');
+}
+
+$bg: #f6f5f8;
+$bg2: #9fbdff3e;
+$shadow-bg: #121212;
+$border: #393939;
+$testbg: #23242e;
+$fontcolor: #c3c3c3;
+$box-shadow: 0px 5px 15px rgba(157, 157, 157, 0.426);
+$transition: all, 0.3s, all, 0.3s;
+$transition2: all, 0.1s, all, 0.1s;
+$color_1: #80a8ff;
+$color_2: #4680ff;
+$font-family_1: Montserrat;
+
+
+.accountpage {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .header {
+        width: 95%;
+        min-height: 40px;
+        border-radius: 20px;
+        margin: 0px auto;
+        margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .userphoto {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.405);
+            margin: 0px auto;
+        }
+        .header_username {
+            width: 100%;
+            height: 100%;
+            padding-top: 12px;
+            font-size: 20px;
+            color: #000;
+            text-align: center;
+        }
+    }
+    .account_menu {
+        width: 95%;
+        min-height: 300px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin: 0px auto;
+        margin-top: 20px;
+        .menu_name {
+            display: inline-block;
+            width: 100%;
+            height: 20px;
+            color: #9fbdffc9;
+            padding-left: 14px;
+            margin-top: 10px;
+
+        }
+        .account_info {
+            width: 100%;
+            min-height: 50px;
+            background-color: $bg;
+            border-radius: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .account_menu_extra {
+            width: 100%;
+            min-height: 50px;
+            background-color: $bg;
+            border-radius: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .account_menu_filed {
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            padding-left: 15px;
+            padding-top: 10px;
+            border-bottom: 1px solid #e6e6e68c;
+            color: $color_2;
+            transition: $transition;
+            &:last-child {
+                border-bottom: 0px solid #e6e6e68c;
+                border-radius: 0px 0px 20px 20px;
+            }
+            &:first-child {
+                border-radius: 20px 20px 0px 0px;
+            }
+            &:active {
+                background-color: #cedeff80;
+            }
+        }
+    }
+}
+
+
+
+

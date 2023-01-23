@@ -96,11 +96,6 @@ const ItemPage: FC = () => {
   return (
     <>
     <div className="itempage">
-      <Link to="/" className="backbutton">
-        <span className="circle" aria-hidden="true">
-          <span className="icon arrow"></span>
-        </span>
-      </Link>
       <div className="slider">
         <Swiper navigation={true} slidesPerView={1} onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}>
           {ItemArray.map((item) => (

@@ -5,6 +5,8 @@ import { makeAutoObservable } from 'mobx'
 export default class Store {
     isLoading = false
     username = ''
+    userphoto = ''
+    footerMenu = true
 
     constructor() {
         makeAutoObservable(this);
@@ -16,6 +18,14 @@ export default class Store {
 
     setUsername(type: string) {
         this.username = type
+    };
+
+    setUserPhoto(type: string) {
+        this.userphoto = type
+    };
+
+    setFooterMenu(type: boolean) {
+        this.footerMenu = type
     };
 
     async createInvoiceLink() {

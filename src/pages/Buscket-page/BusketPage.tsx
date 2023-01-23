@@ -4,7 +4,6 @@ import LoadingComponent from '../../components/Loading';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 // import { IUser } from '../../types/types';
-import { Link } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css';
 
@@ -69,7 +68,7 @@ const BusketPage: FC = () => {
     <>
       <LoadingComponent active={loadingModal} setActive={setLoadingModal}/>
       <div className="busketpage" style={loadingModal ? { filter: "blur(4px)" } : { filter: "blur(0px)" }}>
-        <div className="header"><Link to="/" className="backbutton"><div className="arrow"></div></Link><span>My Cart</span></div>
+        <div className="header"><span>My Cart</span></div>
         <div className="shoppingcart_items">
           <div className="cartitem">
             <div className="cartitem_image"></div>
