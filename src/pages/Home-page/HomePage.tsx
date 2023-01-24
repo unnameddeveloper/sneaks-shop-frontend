@@ -16,7 +16,6 @@ const HomePage: FC = () => {
 
   useEffect(() => {
     store.setUsername(window?.Telegram?.WebApp?.initDataUnsafe?.user?.username)
-    store.setUserPhoto(window?.Telegram?.WebApp?.initDataUnsafe?.user?.photo_url)
     tg.MainButton.hide()
   }, [store])
 

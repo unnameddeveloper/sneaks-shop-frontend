@@ -52,18 +52,37 @@ $color_2: #4680ff;
         width: 95%;
         min-height: 300px;
         border-radius: 20px;
-        overflow: hidden;
         margin: 0px auto;
         margin-top: 20px;
         margin-bottom: 40px;
         .menu_name {
-            display: inline-block;
             width: 100%;
             height: 20px;
             color: #9fbdffc9;
             padding-left: 14px;
             margin-top: 10px;
-
+            display: flex;
+            justify-content: space-between;
+            padding-right: 15px;
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                svg {
+                    display: inline-block;
+                    transform: scale(0.8);
+                }
+                &:last-child {
+                    color: $color_2;
+                    transition: $transition;
+                    transform: translate(0px, -130px);
+                    margin-right: 10px;
+                    margin-top: 10px;
+                    &:active {
+                        transform: translate(0px, -130px) scale(0.9);
+                    }
+                }
+            }
         }
         .account_info {
             width: 100%;
@@ -108,17 +127,29 @@ $color_2: #4680ff;
             }
             .addbutn {
                 background-color: #cedeff80;
-                width: 20px;
+                min-width: 80px;
                 height: 20px;
                 border-radius: 40px;
                 text-align: center;
                 font-size: 12px;
+                padding-left: 10px;
+                padding-right: 10px;
                 padding-top: 3px;
-                transform: scale(1.3);
                 transition: $transition;
-                &:active {
-                    transform: scale(1);
+            }
+            input {
+                min-width: 100px;
+                height: 100%;
+                color: $color_2;
+                border-radius: 20px;
+                padding-left: 10px;
+                transform: translate(0px, -5px);
+                &::-webkit-input-placeholder {
+                    color: #80a8ff6e;
                 }
+                &:-moz-placeholder {
+                    color: #80a8ff6e;
+                  }
             }
         }
     }
