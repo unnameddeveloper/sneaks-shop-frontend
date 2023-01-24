@@ -2,11 +2,9 @@ import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
 import CartItem from '../../components/CartItem';
 import { observer } from 'mobx-react-lite';
+import { IUser } from '../../types/types';
 import { Context } from '../../index';
 import './styles/style.css';
-import ItemArray from '../../assets/productArr';
-import { IUser } from '../../types/types';
-import Footer from '../../components/Footer';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)

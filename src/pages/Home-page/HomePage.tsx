@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect } from 'react';
-import ItemArray from '../../assets/productArr'
+import { ItemArray } from '../../assets/productArr'
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import { observer } from 'mobx-react-lite';

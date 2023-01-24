@@ -4,7 +4,7 @@ const CartItem = ({ product }) => {
 
   return (
     <>
-    <div className="cartitem">
+    <div className="cartitem" key={product.id}>
       <img src={product.image[0]} alt='' className="cartitem_image"></img>
           <div className="item_info">
             <div className="cartitem_name item_info_field">{product.name}</div>

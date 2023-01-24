@@ -1,23 +1,33 @@
-import { FC, useContext, useEffect } from 'react';
-import ItemArray from '../../assets/productArr'
+import { FC, useContext, useEffect, useState } from 'react';
+import FilterModal from '../../components/FilterModal';
+import { ItemArray } from '../../assets/productArr'
 import Footer from '../../components/Footer';
+import { IProduct } from '../../types/types';
 import { observer } from 'mobx-react-lite';
 import Item from '../../components/Item';
 import { Context } from '../../index';
 import './styles/style.css';
 import AOS from 'aos'
+import { tg } from '../../hooks/useTelegram';
 
 
 const CatalogPage: FC = () => {
   const { store } = useContext(Context)
+  const [products, setProducts] = useState<IProduct[]>(ItemArray)
+  const [filterModal, setFiltermModal] = useState<boolean>(false)
 
   useEffect(() => {
     AOS.init()
   }, [])
 
+  useEffect(() => {
+    tg?.MainButton?.hide()
+  }, [])
+
   return (
     <>
-    <div className="catalogpage">
+    <FilterModal active={filterModal} setActive={setFiltermModal}/>
+    <div className={filterModal ? "catalogpage catalogpagehide" : "catalogpage"}>
         <div className="cataloglist">
             <div className="catalogh1">
               <div>Каталог</div>
@@ -33,10 +43,10 @@ const CatalogPage: FC = () => {
             <div className="filtermenu">
                 <div className="sortby"><span>Сортировать:</span><span>По возрастанию цены</span></div>
             </div>
-            { ItemArray.map(item => (<Item product={item}/>)) }
+            { products.map(item => (<Item product={item}/>)) }
             <div className="scrollup" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth'})}>Вверх</div>
         </div>
-        <div className="filter_menu">Больше фильтров</div>
+        <div className="filter_menu" onClick={() => setFiltermModal(true)}>Больше фильтров</div>
     </div>
     <Footer/>
     </>

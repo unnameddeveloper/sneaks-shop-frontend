@@ -25,6 +25,7 @@
 .orderspage .orders_items {
   width: 100%;
   min-height: 100px;
+  margin-bottom: 60px;
 }
 .orderspage .orders_items .orderitem {
   width: 95%;

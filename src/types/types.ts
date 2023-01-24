@@ -3,7 +3,7 @@ export interface IProduct {
     image: string[],
     name: string,
     price: number,
-    sizes: number[]
+    sizes: {size: string}[]
     descritpion: string,
 }
 
@@ -19,9 +19,9 @@ export interface IProductInCart {
 export interface IUser {
     image: string,
     username: string,
+    email: string,
+    phoneNumber: string,
     shoppingCart: IProductInCart[],
     favoriteCart: IProductInCart[],
     orders: IProductInCart[]
-    email: string,
-    phoneNumber: string,
 }

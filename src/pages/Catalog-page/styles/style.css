@@ -111,7 +111,7 @@
   padding-top: 10px;
   color: #80a8ff;
   border-radius: 20px;
-  transition: all, 0.1s, all, 0.1s;
+  transition: all, 1s, all, 1s;
 }
 .catalogpage .cataloglist .scrollup:active {
   transform: scale(0.9);
@@ -126,7 +126,7 @@
   border-radius: 40px;
   background: #f6f5f8;
   z-index: 20;
-  box-shadow: 0px 5px 15px rgba(157, 157, 157, 0.426);
+  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
   text-align: center;
   padding-top: 20px;
   font-size: 20px;
@@ -135,4 +135,117 @@
 }
 .catalogpage .filter_menu:active {
   transform: scale(0.9);
+}
+
+.catalogpagehide::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(116, 116, 116, 0.3294117647);
+  z-index: 10;
+  transition: all, 1s, all, 1s;
+}
+
+.filtermodalwindow {
+  width: 100%;
+  height: 100%;
+  z-index: 40;
+  position: fixed;
+  transition: all, 0.3s, all, 0.3s;
+  overflow: hidden;
+  bottom: 0;
+}
+.filtermodalwindow .filtermodal_menu {
+  background: #fff;
+  width: 100%;
+  height: 83%;
+  position: fixed;
+  bottom: 0;
+  border-radius: 40px 40px 0px 0px;
+  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
+  transition: all, 1s, all, 1s;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  border-bottom: 2px solid #f6f5f8;
+  font-size: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type:last-child {
+  border-bottom: 0px solid #f6f5f8;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type span {
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: "Apple bold";
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type input {
+  display: inline-block;
+  width: 10%;
+  margin-bottom: 10px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type input[type=radio]:checked {
+  background-color: #000;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type input.costfilterinput {
+  width: 130px;
+  height: 40px;
+  background: #f6f5f8;
+  color: #80a8ff;
+  border-radius: 20px;
+  margin-left: 10px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label {
+  width: 90%;
+  margin-bottom: 10px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_closebutton {
+  width: 95%;
+  height: 50px;
+  margin: 0px auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 40px;
+  background: #437fff;
+  color: #fff;
+  padding-top: 10px;
+  font-size: 20px;
+  transition: all, 0.3s, all, 0.3s;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_closebutton:active {
+  transform: scale(0.9);
+}
+.filtermodalwindow .filtermodal_menu .costfilter {
+  justify-content: space-around;
+  align-items: center;
+}
+.filtermodalwindow .filtermodal_menu .costfilter input::-moz-placeholder {
+  color: #80a8ff;
+}
+.filtermodalwindow .filtermodal_menu .costfilter input:-ms-input-placeholder {
+  color: #80a8ff;
+}
+.filtermodalwindow .filtermodal_menu .costfilter input::placeholder {
+  color: #80a8ff;
+}
+
+.filtermodalwindow.hidden {
+  transform: translate(0px, 800px);
+  height: 0;
 }/*# sourceMappingURL=style.css.map */

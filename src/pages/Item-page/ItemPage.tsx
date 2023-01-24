@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { IProduct } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
+import { motion } from 'framer-motion'
 import { Context } from '../../index';
 import './styles/style.css';
 import './styles/sizes.css'
@@ -69,7 +70,7 @@ const ItemPage: FC = () => {
 
   return (
     <>
-    <div className="itempage">
+    <motion.div className="itempage" initial="hidden" exit="hidden" animate="visible" drag="x" dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}} dragElastic={0.8} onDragEnd={(event, info) => {if (info.offset.x > 100) {navigate('/')}}}>
       <div className="slider">
         <Swiper navigation={true} slidesPerView={1} onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}>
           {product?.image.map((image) => (
@@ -89,12 +90,12 @@ const ItemPage: FC = () => {
         <div className="choosesize_vidget">{size ? (<>Выбран: <span>{size}</span></>) : <>Выбранный размер</>}</div>
         <div className="sizes">
           <Swiper slidesPerView={6} navigation={true}>
-            {product?.sizes.map(elem => ( <SwiperSlide><label><input onChange={(e) => setSize(e.target.value)} type="radio" value={elem} name="radio"/><span data-span="span">{elem}</span></label></SwiperSlide> ))}
+            {product?.sizes.map(elem => ( <SwiperSlide><label><input onChange={(e) => setSize(e.target.value)} type="radio" value={elem.size} name="radio"/><span data-span="span">{elem.size}</span></label></SwiperSlide> ))}
           </Swiper>
         </div>
         <div className="itemdesc">{product?.descritpion}</div>        
       </div>
-    </div>
+    </motion.div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
 import OrderItem from '../../components/OrderItem';
-import ItemArray from '../../assets/productArr';
+import { ItemArray } from '../../assets/productArr';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
