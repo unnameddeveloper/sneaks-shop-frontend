@@ -6,6 +6,7 @@ import { Context } from '../../index';
 import './styles/style.css';
 import ItemArray from '../../assets/productArr';
 import { IUser } from '../../types/types';
+import Footer from '../../components/Footer';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
@@ -14,7 +15,12 @@ const BusketPage: FC = () => {
   return (
     <>
       <div className="favoritepage">
-        <div className="header">Favorite</div>
+        <div className="header">
+          <div>Избранное</div>
+          <svg width="20" height="20" fill="#4680ff" stroke="#4680ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
         <div className="favoriteItems">
           {user?.favoriteCart.map(elem => <CartItem product={elem}/>)}
           {!user?.favoriteCart ? (

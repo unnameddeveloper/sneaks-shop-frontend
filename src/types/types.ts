@@ -17,9 +17,11 @@ export interface IProductInCart {
 }
 
 export interface IUser {
+    image: string,
     username: string,
     shoppingCart: IProductInCart[],
     favoriteCart: IProductInCart[],
+    orders: IProductInCart[]
     email: string,
     phoneNumber: string,
 }

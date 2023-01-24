@@ -152,6 +152,19 @@ $color_2: #4680ff;
                   }
             }
         }
+        .account_menu_orders {
+            span {
+                &:last-child {
+                    width: 25px;
+                    height: 25px;
+                    text-align: center;
+                    padding-top: 4px;
+                    border-radius: 30px;
+                    background-color: #cedeff80;
+                    transform: translate(0px, -3px);
+                }
+            }
+        }
     }
 }
 

@@ -5,7 +5,6 @@ import { makeAutoObservable } from 'mobx'
 export default class Store {
     isLoading = false
     username = ''
-    userphoto = ''
     footerMenu = true
 
     constructor() {
@@ -18,10 +17,6 @@ export default class Store {
 
     setUsername(type: string) {
         this.username = type
-    };
-
-    setUserPhoto(type: string) {
-        this.userphoto = type
     };
 
     setFooterMenu(type: boolean) {

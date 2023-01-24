@@ -4,6 +4,7 @@ import FooterMenu from './components/FooterMenu/footerMenu';
 import AccountPage from './pages/Account-page/AccountPage';
 import CatalogPage from './pages/Catalog-page/CatalogPage';
 import BusketPage from './pages/Buscket-page/BusketPage';
+import OrdersPage from './pages/Orders-page/OrdersPage';
 import ItemPage from './pages/Item-page/ItemPage';
 import HomePage from './pages/Home-page/HomePage';
 import { Route, Routes } from 'react-router-dom';
@@ -29,6 +30,7 @@ const App: FC = () => {
         <Route path={'/account'} element={<AccountPage/>}/> 
         <Route path={'/favorite'} element={<FavoritePage/>}/> 
         <Route path={'/catalog'} element={<CatalogPage/>}/> 
+        <Route path={'/orders'} element={<OrdersPage/>}/> 
       </Routes>
       <FooterMenu active={footerMenu} setActive={setFooterMenu}/>
     </>

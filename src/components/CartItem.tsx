@@ -1,5 +1,3 @@
-import { IProduct, IProductInCart } from '../types/types';
-import { Routes, Route, Link } from 'react-router-dom';
 import React, { FC, useState } from 'react';
 
 const CartItem = ({ product }) => {
@@ -7,7 +5,7 @@ const CartItem = ({ product }) => {
   return (
     <>
     <div className="cartitem">
-      <div className="cartitem_image">{product.image}</div>
+      <img src={product.image[0]} alt='' className="cartitem_image"></img>
           <div className="item_info">
             <div className="cartitem_name item_info_field">{product.name}</div>
             <div className="cartitem_choosensize item_info_field">Choosen size</div>

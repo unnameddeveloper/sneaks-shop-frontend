@@ -24,13 +24,13 @@ const AccountPage: FC = () => {
 
   // Для редактирования данных
   useEffect(() => {
-    console.log(window?.Telegram?.WebApp?.initDataUnsafe?.user?.photo_url);
   }, [])
 
   const SendNewData = async () => {
     // Отправляем на бэкенд изменения
     const newData = {number, mail}
-    alert(`Mail: ${newData.mail}, Phome: ${newData.number}`)
+    // const SendNewData = store.sendNewData(newData)
+    alert(`Данные успешно изменены`)
   }
 
   return (
@@ -38,7 +38,7 @@ const AccountPage: FC = () => {
       <LoadingComponent active={loading} setActive={setLoading}/>
       <div className="accountpage">
         <div className="header">
-          <img src={window?.Telegram?.WebApp?.initDataUnsafe?.user?.photo_url} alt="userphoto" className='userphoto'/>
+          <img src={user?.image} alt="userphoto" className='userphoto'/>
           <div className="header_username">@{store.username}</div>
         </div>
         <div className="account_menu">
@@ -51,7 +51,6 @@ const AccountPage: FC = () => {
               )}
             </div>
             <div className="account_info">
-
               <div className="account_info_phone account_menu_filed">
                 <span>Телефон:</span>
                 {edit ? <input type="text" className='addbutn_input' placeholder='Введите телефон' autoFocus value={number} onChange={(e) => setNumber(e.target.value)}></input> : <span>{user?.phoneNumber ? <div>{user?.phoneNumber}</div> : <div className='addbutn'>Не добавлен</div>}</span>}
@@ -60,14 +59,13 @@ const AccountPage: FC = () => {
                 <span>Почта:</span>
                 {edit ? <input type='email' className='addbutn_input' placeholder='Введите почту' value={mail} onChange={(e) => setMail(e.target.value)}></input> : <span>{user?.email ? <div>{user?.email}</div> : <div className='addbutn'>Не добавлен</div>}</span>}
               </div>
-
             </div>
             <h1 className='menu_name'>Покупки</h1>
             <div className="account_menu_extra">
-              <div className="account_menu_orders account_menu_filed">Заказы</div>
+              <Link to="/orders" className="account_menu_orders account_menu_filed"><span>Заказы</span><span>2</span></Link>
               <Link to="/busket" className="account_menu_basket account_menu_filed">Корзина</Link>
               <Link to="/favorite" className="account_menu_basket account_menu_filed">Избранное</Link>
-              <div className="account_menu_basket account_menu_filed">История покупок</div>
+              <Link to="#" className="account_menu_basket account_menu_filed">История покупок</Link>
             </div>
         </div>
       </div>

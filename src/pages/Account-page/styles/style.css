@@ -139,4 +139,13 @@
 }
 .accountpage .account_menu .account_menu_filed input:-moz-placeholder {
   color: rgba(128, 168, 255, 0.431372549);
+}
+.accountpage .account_menu .account_menu_orders span:last-child {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding-top: 4px;
+  border-radius: 30px;
+  background-color: rgba(206, 222, 255, 0.5019607843);
+  transform: translate(0px, -3px);
 }/*# sourceMappingURL=style.css.map */

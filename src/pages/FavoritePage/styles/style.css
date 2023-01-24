@@ -6,8 +6,15 @@
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.favoritepage .header svg {
+  display: inline-block;
+  margin-left: 10px;
 }
 .favoritepage .favoriteItems {
   width: 100%;

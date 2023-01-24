@@ -13,35 +13,14 @@
   color: #000;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   margin-top: 10px;
   margin-bottom: 20px;
 }
-.busketpage .header .backbutton {
-  width: 42px;
-  height: 42px;
-  margin-left: 30px;
-  position: absolute;
-  transform: translate(0px, 15px);
-}
-.busketpage .header .backbutton .arrow {
-  position: relative;
-  width: 1.125rem;
-  height: 0.125rem;
-}
-.busketpage .header .backbutton .arrow::before {
-  position: absolute;
-  content: "";
-  width: 0.625rem;
-  height: 0.625rem;
-  border-top: 0.155rem solid #000;
-  border-right: 0.155rem solid #000;
-  transform: rotate(-135deg);
-}
-.busketpage .header span {
-  width: 100%;
-  height: 100%;
-  text-align: center;
+.busketpage .header svg {
+  display: inline-block;
+  margin-left: 10px;
 }
 .busketpage .shoppingcart_items {
   width: 100%;
