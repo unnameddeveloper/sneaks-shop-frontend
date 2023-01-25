@@ -2,10 +2,11 @@ import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
+import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
+import { Keyboard } from 'react-native'
 import { Context } from '../../index';
 import './styles/style.css';
-import { IUser } from '../../types/types';
 
 
 const AccountPage: FC = () => {
@@ -30,6 +31,7 @@ const AccountPage: FC = () => {
     // Отправляем на бэкенд изменения
     const newData = {number, mail}
     // const SendNewData = store.sendNewData(newData)
+    Keyboard.dismiss()
     alert(`Данные успешно изменены`)
   }
 
