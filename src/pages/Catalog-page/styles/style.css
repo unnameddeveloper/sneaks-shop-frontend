@@ -172,10 +172,12 @@
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_type span[data-type=header] {
   display: inline-block;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 30px;
   padding-left: 10px;
-  padding-top: 5px;
+  padding-top: 7px;
   font-size: 16px;
   margin: 0px auto;
   margin-bottom: 20px;
@@ -183,6 +185,26 @@
   color: #538aff;
   background: #f6f5f8;
   border-radius: 20px;
+  padding-right: 20px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type span.costheader {
+  width: 75%;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type .closeKeboardButton {
+  display: inline-block;
+  width: 20%;
+  margin-left: 10px;
+  margin-bottom: 12px;
+  text-align: center;
+  border-radius: 20px;
+  height: 30px;
+  background: #f6f5f8;
+  color: #80a8ff;
+  padding-top: 7px;
+  transition: all, 0.3s, all, 0.3s;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type .closeKeboardButton:active {
+  transform: scale(0.9);
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_type label {
   width: 100px;
@@ -240,6 +262,10 @@
   padding-left: 10px;
   font-size: 16px;
   margin-bottom: 10px;
+  transition: all, 0.3s, all, 0.3s;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type input.costfilterinput:focus {
+  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_closebutton {
   width: 95%;

@@ -2,9 +2,9 @@ import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
+import { Keyboard } from 'react-native-web'
 import { IUser } from '../../types/types';
 import { Link } from 'react-router-dom';
-import { Keyboard } from 'react-native'
 import { Context } from '../../index';
 import './styles/style.css';
 
@@ -12,8 +12,8 @@ import './styles/style.css';
 const AccountPage: FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [edit, setEdit] = useState<boolean>(false)
-  const [mail, setMail] = useState<string>()
   const [number, setNumber] = useState<string>()
+  const [mail, setMail] = useState<string>()
   const [user, setUser] = useState<IUser>()
   const { store } = useContext(Context)
 
@@ -31,7 +31,7 @@ const AccountPage: FC = () => {
     // Отправляем на бэкенд изменения
     const newData = {number, mail}
     // const SendNewData = store.sendNewData(newData)
-    Keyboard.dismiss()
+    Keyboard?.dismiss()
     alert(`Данные успешно изменены`)
   }
 

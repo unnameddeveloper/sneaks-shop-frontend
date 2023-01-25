@@ -1,8 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { motion } from 'framer-motion'
+import { Keyboard } from 'react-native-web'
 import 'swiper/css'
 
 const FilterModal = ({ active, setActive }) => {
+
+  const closeKeyboard = () => {
+    Keyboard.dismiss()
+  }
 
   return (
     <>
@@ -28,7 +32,8 @@ const FilterModal = ({ active, setActive }) => {
             </Swiper>
           </div>
           <div className="filtermenu_type costfilter">
-            <span data-type="header">Цена:</span>
+            <span data-type="header" className='costheader'><span>Цена:</span></span>
+            <span className='closeKeboardButton' onClick={closeKeyboard}>Готово</span>
             <input placeholder='От' className='costfilterinput' type="number"/>
             -
             <input placeholder='До' className='costfilterinput' type="number"/>
@@ -43,7 +48,7 @@ const FilterModal = ({ active, setActive }) => {
               <SwiperSlide><label><input type="checkbox" name="male" id="1" /><span data-type="circle"></span><span data-type="span2">Зеленый</span></label></SwiperSlide>
             </Swiper>
           </div>
-          <div className="filtermenu_closebutton" onClick={() => setActive(false)}>Готово</div>
+          <div className="filtermenu_closebutton" onClick={() => {setActive(false); closeKeyboard()}}>Готово</div>
         </div>
       </div>
     </>
