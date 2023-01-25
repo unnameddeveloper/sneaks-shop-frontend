@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "Apple bold";
-  src: url("./fonts/SFProDisplay-Semibold.woff"), url("./fonts/SFProDisplay-Semibold.woff2");
-}
 .catalogpage {
   width: 100%;
   min-height: 200px;
@@ -48,7 +44,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   text-align: center;
-  font-size: 25px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -66,7 +62,6 @@
   margin-bottom: 10px;
   margin-top: 10px;
   cursor: pointer;
-  font-family: "Apple bold";
   border-radius: 20px;
   background-color: #f6f5f8;
   overflow: hidden;
@@ -119,17 +114,17 @@
 .catalogpage .filter_menu {
   position: fixed;
   width: 95%;
-  height: 60px;
+  height: 40px;
   margin: 10px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   bottom: 0;
   border-radius: 40px;
   background: #f6f5f8;
   z-index: 20;
   box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
   text-align: center;
-  padding-top: 20px;
-  font-size: 20px;
+  padding-top: 10px;
+  font-size: 18px;
   color: #80a8ff;
   transition: all, 0.3s, all, 0.3s;
 }
@@ -154,20 +149,13 @@
   z-index: 40;
   position: fixed;
   transition: all, 0.3s, all, 0.3s;
-  overflow: hidden;
-  bottom: 0;
+  background: #fff;
 }
 .filtermodalwindow .filtermodal_menu {
-  background: #fff;
   width: 100%;
-  height: 83%;
-  position: fixed;
-  bottom: 0;
-  border-radius: 40px 40px 0px 0px;
-  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
+  height: 100%;
   transition: all, 1s, all, 1s;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  overflow: scroll;
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_type {
   width: 100%;
@@ -182,23 +170,65 @@
 .filtermodalwindow .filtermodal_menu .filtermenu_type:last-child {
   border-bottom: 0px solid #f6f5f8;
 }
-.filtermodalwindow .filtermodal_menu .filtermenu_type span {
+.filtermodalwindow .filtermodal_menu .filtermenu_type span[data-type=header] {
   display: inline-block;
   width: 100%;
   height: 30px;
   padding-left: 10px;
-  font-size: 18px;
-  margin-bottom: 10px;
+  padding-top: 5px;
+  font-size: 16px;
+  margin: 0px auto;
+  margin-bottom: 20px;
   margin-top: 10px;
-  font-family: "Apple bold";
+  color: #538aff;
+  background: #f6f5f8;
+  border-radius: 20px;
 }
-.filtermodalwindow .filtermodal_menu .filtermenu_type input {
-  display: inline-block;
-  width: 10%;
+.filtermodalwindow .filtermodal_menu .filtermenu_type label {
+  width: 100px;
+  height: 30px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
-.filtermodalwindow .filtermodal_menu .filtermenu_type input[type=radio]:checked {
-  background-color: #000;
+.filtermodalwindow .filtermodal_menu .filtermenu_type label input {
+  position: absolute;
+  display: inline-block;
+  left: -9999px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label input:checked + span[data-type=circle] + span[data-type=span2] {
+  color: #437fff;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label input:checked + span[data-type=circle]::before {
+  background: #437fff;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label span[data-type=span2] {
+  display: inline-block;
+  min-width: 60px;
+  z-index: 10;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label span[data-type=span2]:first-child {
+  width: 40px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label span[data-type=circle] {
+  transition: all, 0.3s, all, 0.3s;
+  display: inline-block;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 50%;
+  border: 1px solid #437fff;
+  margin-right: 10px;
+}
+.filtermodalwindow .filtermodal_menu .filtermenu_type label span[data-type=circle]::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  transition: all, 0.3s, all, 0.3s;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translate(4px, 4px);
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_type input.costfilterinput {
   width: 130px;
@@ -209,9 +239,6 @@
   margin-left: 10px;
   padding-left: 10px;
   font-size: 16px;
-}
-.filtermodalwindow .filtermodal_menu .filtermenu_type label {
-  width: 90%;
   margin-bottom: 10px;
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_closebutton {
@@ -219,14 +246,15 @@
   height: 50px;
   margin: 0px auto;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 25px;
   text-align: center;
   border-radius: 40px;
   background: #437fff;
   color: #fff;
-  padding-top: 10px;
+  padding-top: 15px;
   font-size: 20px;
   transition: all, 0.3s, all, 0.3s;
+  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_closebutton:active {
   transform: scale(0.9);

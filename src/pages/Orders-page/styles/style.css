@@ -26,13 +26,16 @@
   width: 100%;
   min-height: 100px;
   margin-bottom: 60px;
+  padding-bottom: 100px;
 }
 .orderspage .orders_items .orderitem {
   width: 95%;
-  margin: 0px auto;
+  min-height: 300px;
+  display: block;
   background-color: #f6f5f8;
   border-radius: 20px;
-  margin-top: 10px;
+  margin: 0px auto;
+  margin-top: 15px;
 }
 .orderspage .orders_items .orderitem .orderinfo {
   width: 100%;

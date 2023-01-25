@@ -31,7 +31,7 @@ const CatalogPage: FC = () => {
         <div className="cataloglist">
             <div className="catalogh1">
               <div>Каталог</div>
-              <svg width="30" height="30" fill="none" stroke="#4680ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <svg width="22" height="22" fill="none" stroke="#4680ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 6h13"></path>
                 <path d="M8 12h13"></path>
                 <path d="M8 18h13"></path>

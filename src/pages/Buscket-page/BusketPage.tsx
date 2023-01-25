@@ -11,11 +11,18 @@ import './styles/style.css';
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
+  const [totalShopCartPrice, setTotalShopCartPrice] = useState<number>(0)
   const [loadingModal, setLoadingModal] = useState<boolean>(false)
 
-  // Получаем информацию о добавленных товарах в корзину
-  // useEffect(() => {
-  // }, [])
+  useEffect(() => {
+    // Считаем итоговую цену добавленных товаров
+    const getTotalPrice = (products = []) => {
+      return products.reduce((acc, item) => {
+          return setTotalShopCartPrice(acc += item.price)
+      }, 0)
+    }
+    getTotalPrice(user?.shoppingCart)
+  }, [user])
 
   useEffect(() => {
     if (store.isLoading === true) {
@@ -82,8 +89,8 @@ const BusketPage: FC = () => {
         </div>
         <div className="line"></div>
         <div className="invoicescore">
-          <div className="extrainfo">Доставка: <span data-type="invoice">+ $29</span></div>
-          <div className="extrainfo">Итого: <span data-type="invoice">$339</span></div>
+          {user?.shoppingCart ? <div className="extrainfo">Доставка: <span data-type="invoice">+ $29</span></div> : <div className="extrainfo">Доставка: <span data-type="invoice">+ $0</span></div>}
+          <div className="extrainfo">Итого: <span data-type="invoice">${totalShopCartPrice}</span></div>
         </div>
       </div>
     </>

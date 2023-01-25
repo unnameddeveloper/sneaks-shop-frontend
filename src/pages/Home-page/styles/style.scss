@@ -1,14 +1,9 @@
-@font-face {
-    font-family: "Apple bold";
-    src: url('./fonts/SFProDisplay-Semibold.woff'), url('./fonts/SFProDisplay-Semibold.woff2');
-}
-
 $bg: #f6f5f8;
 $shadow-bg: #121212;
 $border: #393939;
 $testbg: #23242e;
 $fontcolor: #c3c3c3;
-$box-shadow: 0px 5px 15px rgba(157, 157, 157, 0.426);
+$box-shadow: 0px 15px 45px #9d9d9d65;
 $transition: all, 0.3s, all, 0.3s;
 $transition2: all, 0.1s, all, 0.1s;
 $color_1: #80a8ff;
@@ -27,6 +22,7 @@ $font-family_1: Montserrat;
     margin-top: 10px;
     margin-bottom: 20px;
     padding-left: 30px;
+    box-shadow: $box-shadow;
     .companyname {
         width: 100%;
         height: 100px;
@@ -88,14 +84,15 @@ $font-family_1: Montserrat;
     transition: $transition;
     overflow: hidden;
     margin: 0px auto;
-    background-color: #80a8ff51;
-    color: #fff;
-    font-size: 30px;
+    background-color: $bg;
+    color: $color_1;
+    font-size: 25px;
     padding: 10px;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
     padding-left: 20px;
+    box-shadow: $box-shadow;
     &:active {
         transform: scale(0.95);
     }
@@ -114,6 +111,7 @@ $font-family_1: Montserrat;
         overflow: hidden;
         margin-left: 10px;
         transition: $transition;
+        box-shadow: $box-shadow;
         &:active {
             transform: scale(0.95);
         }
@@ -139,6 +137,7 @@ $font-family_1: Montserrat;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            box-shadow: $box-shadow;
             &:active {
                 transform: scale(0.95);
             }
@@ -160,7 +159,7 @@ $font-family_1: Montserrat;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Apple bold";
+            box-shadow: $box-shadow;
             font-size: 20px;
             cursor: pointer;
             &:active {
@@ -183,7 +182,7 @@ $font-family_1: Montserrat;
     margin: 0px auto;
     .filter {
         font-size: 20px;
-        font-family: "Apple bold";
+        
         width: 100%;
         padding-left: 10px;
         margin-bottom: 10px;
@@ -198,7 +197,7 @@ $font-family_1: Montserrat;
         margin-bottom: 10px;
         margin-top: 10px;
         cursor: pointer;
-        font-family: "Apple bold";
+        
         border-radius: 20px;
         background-color: $bg;
         overflow: hidden;

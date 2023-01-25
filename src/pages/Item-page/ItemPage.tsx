@@ -1,7 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { IProduct } from '../../types/types';
+import { IProduct, IProductInCart, IUser } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 import { motion } from 'framer-motion'
@@ -16,7 +16,20 @@ const ItemPage: FC = () => {
   const { store } = useContext(Context)
   const [size, setSize] = useState<string>()
   const [product, setProduct] = useState<IProduct>()
+  const [user, setUser] = useState<IUser>()
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Функция добавления товара в корзину
+  const addProductInCart = (product: IProductInCart) => {
+    const alreadyAdded = user.shoppingCart.find(item => item.id === product.id)
+    if (alreadyAdded) {
+      // Удаляем из корзину
+      // const deleteFromCart = await store.deleteFromCart()
+    } else {
+      // Добавляем в корзину
+      // const addInCart = await store.addInCart()
+    }
+  }
 
   // Получаем данные товара (бэкенд запрос)
   useEffect(() => {

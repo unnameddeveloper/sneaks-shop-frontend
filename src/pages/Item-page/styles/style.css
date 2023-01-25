@@ -8,54 +8,6 @@
   flex-wrap: wrap;
   background-color: #f6f5f8;
 }
-.itempage .backbutton {
-  position: fixed;
-  top: 0;
-  width: 42px;
-  height: 42px;
-  height: auto;
-  margin-left: 10px;
-  z-index: 10;
-  transform: translate(-160px, 20px) scale(1.1);
-  transition: all, 0.3s, all, 0.3s;
-}
-.itempage .backbutton:active {
-  transform: translate(-160px, 20px) scale(1);
-}
-.itempage .backbutton .circle {
-  position: relative;
-  display: block;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  background: #b9ceff;
-  border-radius: 1.625rem;
-  transform: rotate(180deg);
-}
-.itempage .backbutton .circle .icon {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  background: #fff;
-}
-.itempage .backbutton .circle .icon.arrow {
-  left: 0.625rem;
-  width: 1.125rem;
-  height: 0.125rem;
-  background: none;
-}
-.itempage .backbutton .circle .icon.arrow::before {
-  position: absolute;
-  content: "";
-  top: -0.25rem;
-  right: 0.0625rem;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-top: 0.155rem solid #fff;
-  border-right: 0.155rem solid #fff;
-  transform: rotate(45deg);
-}
 .itempage .slider {
   width: 100%;
   height: 430px;

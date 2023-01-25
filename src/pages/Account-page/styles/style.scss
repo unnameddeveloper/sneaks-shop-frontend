@@ -39,6 +39,18 @@ $color_2: #4680ff;
             background-color: rgba(0, 0, 0, 0.405);
             margin: 0px auto;
         }
+        .emptyphoto {
+            color: #4680ff;
+            font-size: 30px;
+            background: $bg;
+            text-align: center;
+            padding-top: 23px;
+            transition: $transition;
+            &:active {
+                transform: scale(0.95);
+                background-color: #cedeff80;
+            }
+        }
         .header_username {
             width: 100%;
             height: 100%;

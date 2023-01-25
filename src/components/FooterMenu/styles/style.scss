@@ -12,7 +12,7 @@ $color_1: #80a8ff;
 
 .footermenu {
     width: 95%;
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: center;
     justify-content: space-around;
@@ -26,6 +26,7 @@ $color_1: #80a8ff;
     box-shadow: $box-shadow;
     z-index: 30;
     .footermenu_link {
+        transform: scale(0.9);
         transition: $transition;
         &:active {
             transform: scale(0.9);

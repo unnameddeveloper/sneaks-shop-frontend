@@ -38,7 +38,7 @@ const AccountPage: FC = () => {
       <LoadingComponent active={loading} setActive={setLoading}/>
       <div className="accountpage">
         <div className="header">
-          <img src={user?.image} alt="userphoto" className='userphoto'/>
+          {user?.image ? <img src={user?.image} alt="userphoto" className='userphoto'/> : <div className='userphoto emptyphoto'>+</div>}
           <div className="header_username">@{store.username}</div>
         </div>
         <div className="account_menu">

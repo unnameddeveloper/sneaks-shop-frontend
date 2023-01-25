@@ -27,6 +27,18 @@
   background-color: rgba(0, 0, 0, 0.405);
   margin: 0px auto;
 }
+.accountpage .header .emptyphoto {
+  color: #4680ff;
+  font-size: 30px;
+  background: #f6f5f8;
+  text-align: center;
+  padding-top: 23px;
+  transition: all, 0.3s, all, 0.3s;
+}
+.accountpage .header .emptyphoto:active {
+  transform: scale(0.95);
+  background-color: rgba(206, 222, 255, 0.5019607843);
+}
 .accountpage .header .header_username {
   width: 100%;
   height: 100%;
