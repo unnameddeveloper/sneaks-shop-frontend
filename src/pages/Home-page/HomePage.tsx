@@ -1,3 +1,4 @@
+import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper'
 import React, { FC, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,9 +28,9 @@ const HomePage: FC = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
+      if (window.pageYOffset >= 50) {
         store.setFooterMenu(true)
-      } else {
+      } else if (window.pageYOffset <= 50) {
         store.setFooterMenu(false)
       }
     })
@@ -72,7 +73,7 @@ const HomePage: FC = () => {
     <div className="vidgets">
       <div className="vidget_h1">ПОПУЛЯРНОЕ</div>
       <div className="marketing_vidget" data-aos="fade-up" data-aos-duration="600">
-        <Swiper navigation={true} slidesPerView={1}>
+        <Swiper autoplay={{delay:3000}} navigation={true} pagination={{clickable: true}} slidesPerView={1} modules={[Autoplay, Navigation, Pagination]}>
             {ItemArray.map(item => (
               <SwiperSlide>
                   <Item product={item}/>
@@ -82,7 +83,7 @@ const HomePage: FC = () => {
       </div>
     </div>
     <div className="homepage">
-      <div className="goincatalogimg" onClick={() => {navigate('/catalog'); window.scrollTo(0, 0)}}><div className="goincatalogbutton">Каталог</div></div>
+      <div className="goincatalogimg" data-aos="fade-up" data-aos-duration="600" onClick={() => {navigate('/catalog'); window.scrollTo(0, 0)}}><div className="goincatalogbutton">Каталог</div></div>
     </div>
     <Footer/>
     </>

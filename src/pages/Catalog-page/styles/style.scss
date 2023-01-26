@@ -7,6 +7,20 @@ $box-shadow: 0px 15px 45px #9d9d9d8f;
 $transition: all, 0.3s, all, 0.3s;
 $transition2: all, 1s, all, 1s;
 $color_1: #80a8ff;
+$green: #e5fd60;
+$purple: #281bdb;
+$black: #1c1b1d;
+
+/*
+// Обычный 
+font-family: 'Futura PT Book';
+// Как медиум
+font-family: 'Futura PT Demi';
+// Тонкий, узкий
+font-family: 'Futura PT Cond Book';
+font-family: 'Futura PT medium';
+font-family: 'Futura PT Cond Extra';
+*/
 
 .catalogpage {
     width: 100%;
@@ -19,6 +33,85 @@ $color_1: #80a8ff;
         border-radius: 20px;
         padding-bottom: 10px;
         margin: 0px auto;
+        margin-top: 10px;
+        padding-bottom: 80px;
+        .catalogfilter {
+            width: 95%;
+            height: 250px;
+            margin: 0px auto;
+            background: $bg;
+            border: 1px solid #dcdcdca0;
+            border-radius: 20px;
+            padding-top: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            .catalogh1 {
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                border-radius: 20px;
+                padding-right: 5px;
+                padding-top: 5px;
+                .profileimage {
+                    width: 30px;
+                    height: 30px;
+                    background: $green;
+                    border-radius: 50%;
+                    border: 1px solid #dcdcdca0;
+                    margin-left: auto;
+                }
+                svg {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
+            .welcome {
+                width: 100%;
+                height: 35px;
+                font-size: 30px;
+                font-family: 'Futura PT Demi';
+                margin-bottom: 10px;
+                margin-top: 30px;
+                display: inline-block;
+                span {
+                    display: inline-block;
+                    font-size: 23px;
+                    transform: translate(5px, -3px);
+                }
+            }
+            .inputtitle {
+                width: 100%;
+                height: 20px;
+                color: #a3a3a3;
+            }
+            .inputfilter {
+                width: 100%;
+                height: 60px;
+                border-radius: 20px;
+                background: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-top: 30px;
+                input {
+                    width: 80%;
+                    height: 100%;
+                    font-size: 17px;
+                    padding-left: 10px;
+                }
+                svg {
+                    transition: $transition;
+                    &:active {
+                        transform: scale(0.9);
+                    }
+                }
+            }
+        }
         .filtermenu {
             width: 100%;
             min-height: 50px;
@@ -27,6 +120,8 @@ $color_1: #80a8ff;
             justify-content: space-between;
             padding-left: 10px;
             padding-right: 10px;
+            margin-top: 20px;
+            margin-bottom: 10px;
             .sortby {
                 font-size: 16px;
                 display: flex;
@@ -37,30 +132,15 @@ $color_1: #80a8ff;
                         min-width: 120px;
                         height: 30px;
                         border-radius: 20px;
-                        background: $bg;
+                        background: $green;
                         text-align: center;
                         padding-top: 7px;
                         padding-left: 10px;
                         padding-right: 10px;
-                        color: $color_1;
+                        color: $black;
                         margin-left: 10px;
                     }
                 }
-            }
-        }
-        .catalogh1 {
-            width: 100%;
-            height: 30px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            svg {
-                display: inline-block;
-                margin-left: 10px;
             }
         }
         .item {
@@ -108,39 +188,21 @@ $color_1: #80a8ff;
             }
         }
         .scrollup {
-            width: 100%;
+            width: 40px;
             height: 40px;
+            margin: 0px auto;
             margin-top: 10px;
             text-align: center;
             background-color: $bg;
             font-size: 18px;
-            padding-top: 10px;
-            color: #80a8ff;
-            border-radius: 20px;
+            padding-top: 8px;
+            color: $black;
+            background-color: $green;
+            border-radius: 50%;
             transition: $transition2;
             &:active {
                 transform: scale(0.9);
             }
-        }
-    }
-    .filter_menu {
-        position: fixed;
-        width: 95%;
-        height: 40px;
-        margin: 10px;
-        margin-bottom: 70px;
-        bottom: 0;
-        border-radius: 40px;
-        background: $bg;
-        z-index: 20;
-        box-shadow: $box-shadow;
-        text-align: center;
-        padding-top: 10px;
-        font-size: 18px;
-        color: $color_1;
-        transition: $transition;
-        &:active {
-            transform: scale(0.9);
         }
     }
 }
@@ -151,18 +213,21 @@ $color_1: #80a8ff;
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-color: #74747454;
+    background-color: #7474748e;
     z-index: 10;
     transition: $transition2;
 }
 
 .filtermodalwindow {
     width: 100%;
-    height: 100%;
+    height: 95%;
     z-index: 40;
     position: fixed;
+    bottom: 0;
     transition: $transition;
     background: #fff;
+    border-radius: 20px 20px 0px 0px;
+    border: 1px solid #b7b7b7;
     .filtermodal_menu {
         width: 100%;
         height: 100%;
@@ -192,8 +257,8 @@ $color_1: #80a8ff;
                 margin: 0px auto;
                 margin-bottom: 20px;
                 margin-top: 10px;
-                color: #538aff;
-                background: $bg;
+                color: $black;
+                background: $green;
                 border-radius: 20px;
                 padding-right: 20px;
             }
@@ -209,7 +274,7 @@ $color_1: #80a8ff;
                 border-radius: 20px;
                 height: 30px;
                 background: $bg;
-                color: $color_1;
+                color: $black;
                 padding-top: 7px;
                 transition: $transition;
                 &:active {
@@ -250,7 +315,7 @@ $color_1: #80a8ff;
                     min-width: 20px;
                     min-height: 20px;
                     border-radius: 50%;
-                    border: 1px solid #437fff;
+                    border: 1px solid $black;
                     margin-right: 10px;
                     &::before {
                         content: '';
@@ -269,7 +334,7 @@ $color_1: #80a8ff;
                 width: 130px;
                 height: 40px;
                 background: $bg;
-                color: $color_1;
+                color: $black;
                 border-radius: 20px;
                 margin-left: 10px;
                 padding-left: 10px;
@@ -289,8 +354,8 @@ $color_1: #80a8ff;
             margin-top: 25px;
             text-align: center;
             border-radius: 40px;
-            background: #437fff;
-            color: #fff;
+            background: $black;
+            color: $green;
             padding-top: 15px;
             font-size: 20px;
             transition: $transition;
@@ -304,7 +369,7 @@ $color_1: #80a8ff;
             align-items: center;
             input {
                 &::placeholder {
-                    color: $color_1;
+                    color: $black;
                 }
             }
         }

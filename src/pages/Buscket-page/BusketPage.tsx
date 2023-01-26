@@ -77,7 +77,7 @@ const BusketPage: FC = () => {
       <LoadingComponent active={loadingModal} setActive={setLoadingModal}/>
       <div className="busketpage" style={loadingModal ? { filter: "blur(4px)" } : { filter: "blur(0px)" }}>
         <div className="header">
-          <span>My Cart</span>
+          <span>Моя корзина</span>
           <svg width="23" height="23" fill="#fff" stroke="#4680ff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.7" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
             <path d="M3 6h18"></path>

@@ -1,3 +1,14 @@
+@charset "UTF-8";
+/*
+// Обычный 
+font-family: 'Futura PT Book';
+// Как медиум
+font-family: 'Futura PT Demi';
+// Тонкий, узкий
+font-family: 'Futura PT Cond Book';
+font-family: 'Futura PT medium';
+font-family: 'Futura PT Cond Extra';
+*/
 .catalogpage {
   width: 100%;
   min-height: 200px;
@@ -10,6 +21,85 @@
   border-radius: 20px;
   padding-bottom: 10px;
   margin: 0px auto;
+  margin-top: 10px;
+  padding-bottom: 80px;
+}
+.catalogpage .cataloglist .catalogfilter {
+  width: 95%;
+  height: 250px;
+  margin: 0px auto;
+  background: #f6f5f8;
+  border: 1px solid rgba(220, 220, 220, 0.6274509804);
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.catalogpage .cataloglist .catalogfilter .catalogh1 {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding-right: 5px;
+  padding-top: 5px;
+}
+.catalogpage .cataloglist .catalogfilter .catalogh1 .profileimage {
+  width: 30px;
+  height: 30px;
+  background: #e5fd60;
+  border-radius: 50%;
+  border: 1px solid rgba(220, 220, 220, 0.6274509804);
+  margin-left: auto;
+}
+.catalogpage .cataloglist .catalogfilter .catalogh1 svg {
+  display: inline-block;
+  margin-right: 10px;
+}
+.catalogpage .cataloglist .catalogfilter .welcome {
+  width: 100%;
+  height: 35px;
+  font-size: 30px;
+  font-family: "Futura PT Demi";
+  margin-bottom: 10px;
+  margin-top: 30px;
+  display: inline-block;
+}
+.catalogpage .cataloglist .catalogfilter .welcome span {
+  display: inline-block;
+  font-size: 23px;
+  transform: translate(5px, -3px);
+}
+.catalogpage .cataloglist .catalogfilter .inputtitle {
+  width: 100%;
+  height: 20px;
+  color: #a3a3a3;
+}
+.catalogpage .cataloglist .catalogfilter .inputfilter {
+  width: 100%;
+  height: 60px;
+  border-radius: 20px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 30px;
+}
+.catalogpage .cataloglist .catalogfilter .inputfilter input {
+  width: 80%;
+  height: 100%;
+  font-size: 17px;
+  padding-left: 10px;
+}
+.catalogpage .cataloglist .catalogfilter .inputfilter svg {
+  transition: all, 0.3s, all, 0.3s;
+}
+.catalogpage .cataloglist .catalogfilter .inputfilter svg:active {
+  transform: scale(0.9);
 }
 .catalogpage .cataloglist .filtermenu {
   width: 100%;
@@ -19,6 +109,8 @@
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .catalogpage .cataloglist .filtermenu .sortby {
   font-size: 16px;
@@ -30,27 +122,12 @@
   min-width: 120px;
   height: 30px;
   border-radius: 20px;
-  background: #f6f5f8;
+  background: #e5fd60;
   text-align: center;
   padding-top: 7px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #80a8ff;
-  margin-left: 10px;
-}
-.catalogpage .cataloglist .catalogh1 {
-  width: 100%;
-  height: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.catalogpage .cataloglist .catalogh1 svg {
-  display: inline-block;
+  color: #1c1b1d;
   margin-left: 10px;
 }
 .catalogpage .cataloglist .item {
@@ -97,38 +174,20 @@
   margin-left: auto;
 }
 .catalogpage .cataloglist .scrollup {
-  width: 100%;
+  width: 40px;
   height: 40px;
+  margin: 0px auto;
   margin-top: 10px;
   text-align: center;
   background-color: #f6f5f8;
   font-size: 18px;
-  padding-top: 10px;
-  color: #80a8ff;
-  border-radius: 20px;
+  padding-top: 8px;
+  color: #1c1b1d;
+  background-color: #e5fd60;
+  border-radius: 50%;
   transition: all, 1s, all, 1s;
 }
 .catalogpage .cataloglist .scrollup:active {
-  transform: scale(0.9);
-}
-.catalogpage .filter_menu {
-  position: fixed;
-  width: 95%;
-  height: 40px;
-  margin: 10px;
-  margin-bottom: 70px;
-  bottom: 0;
-  border-radius: 40px;
-  background: #f6f5f8;
-  z-index: 20;
-  box-shadow: 0px 15px 45px rgba(157, 157, 157, 0.5607843137);
-  text-align: center;
-  padding-top: 10px;
-  font-size: 18px;
-  color: #80a8ff;
-  transition: all, 0.3s, all, 0.3s;
-}
-.catalogpage .filter_menu:active {
   transform: scale(0.9);
 }
 
@@ -138,18 +197,21 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(116, 116, 116, 0.3294117647);
+  background-color: rgba(116, 116, 116, 0.5568627451);
   z-index: 10;
   transition: all, 1s, all, 1s;
 }
 
 .filtermodalwindow {
   width: 100%;
-  height: 100%;
+  height: 95%;
   z-index: 40;
   position: fixed;
+  bottom: 0;
   transition: all, 0.3s, all, 0.3s;
   background: #fff;
+  border-radius: 20px 20px 0px 0px;
+  border: 1px solid #b7b7b7;
 }
 .filtermodalwindow .filtermodal_menu {
   width: 100%;
@@ -182,8 +244,8 @@
   margin: 0px auto;
   margin-bottom: 20px;
   margin-top: 10px;
-  color: #538aff;
-  background: #f6f5f8;
+  color: #1c1b1d;
+  background: #e5fd60;
   border-radius: 20px;
   padding-right: 20px;
 }
@@ -199,7 +261,7 @@
   border-radius: 20px;
   height: 30px;
   background: #f6f5f8;
-  color: #80a8ff;
+  color: #1c1b1d;
   padding-top: 7px;
   transition: all, 0.3s, all, 0.3s;
 }
@@ -239,7 +301,7 @@
   min-width: 20px;
   min-height: 20px;
   border-radius: 50%;
-  border: 1px solid #437fff;
+  border: 1px solid #1c1b1d;
   margin-right: 10px;
 }
 .filtermodalwindow .filtermodal_menu .filtermenu_type label span[data-type=circle]::before {
@@ -256,7 +318,7 @@
   width: 130px;
   height: 40px;
   background: #f6f5f8;
-  color: #80a8ff;
+  color: #1c1b1d;
   border-radius: 20px;
   margin-left: 10px;
   padding-left: 10px;
@@ -275,8 +337,8 @@
   margin-top: 25px;
   text-align: center;
   border-radius: 40px;
-  background: #437fff;
-  color: #fff;
+  background: #1c1b1d;
+  color: #e5fd60;
   padding-top: 15px;
   font-size: 20px;
   transition: all, 0.3s, all, 0.3s;
@@ -290,13 +352,13 @@
   align-items: center;
 }
 .filtermodalwindow .filtermodal_menu .costfilter input::-moz-placeholder {
-  color: #80a8ff;
+  color: #1c1b1d;
 }
 .filtermodalwindow .filtermodal_menu .costfilter input:-ms-input-placeholder {
-  color: #80a8ff;
+  color: #1c1b1d;
 }
 .filtermodalwindow .filtermodal_menu .costfilter input::placeholder {
-  color: #80a8ff;
+  color: #1c1b1d;
 }
 
 .filtermodalwindow.hidden {
