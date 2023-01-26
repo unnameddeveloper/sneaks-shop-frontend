@@ -1,7 +1,7 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
+import { IProduct, IProductInCart, IUser } from '../../types/types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { IProduct, IProductInCart, IUser } from '../../types/types';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 import { motion } from 'framer-motion'
@@ -18,12 +18,13 @@ const ItemPage: FC = () => {
   const [product, setProduct] = useState<IProduct>()
   const [user, setUser] = useState<IUser>()
   const [currentIndex, setCurrentIndex] = useState(0)
+  store.setFooterMenu(true)
 
   // Функция добавления товара в корзину
   const addProductInCart = (product: IProductInCart) => {
     const alreadyAdded = user.shoppingCart.find(item => item.id === product.id)
     if (alreadyAdded) {
-      // Удаляем из корзину
+      // Удаляем из корзины
       // const deleteFromCart = await store.deleteFromCart()
     } else {
       // Добавляем в корзину
@@ -86,7 +87,7 @@ const ItemPage: FC = () => {
     <motion.div className="itempage" initial="hidden" exit="hidden" animate="visible" drag="x" dragConstraints={{top: 0, bottom: 0, left: 0, right: 0}} dragElastic={0.8} onDragEnd={(event, info) => {if (info.offset.x > 100) {navigate('/')}}}>
       <div className="slider">
         <Swiper navigation={true} slidesPerView={1} onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}>
-          {product?.image.map((image) => (
+          {product?.images.map((image) => (
             <SwiperSlide className='SwiperSlide'><img src={image} alt="img" className='sliderimage'></img></SwiperSlide>
           ))}
         </Swiper>

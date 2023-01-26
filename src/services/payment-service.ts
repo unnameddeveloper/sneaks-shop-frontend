@@ -1,8 +1,12 @@
 import axios, { AxiosResponse } from 'axios'
-import { $api } from "../api/api";
+
+interface Invoice {
+    ok: boolean, 
+    result: string
+}
 
 export default class PaymentsService {
-    static async createInvoiceLink() {
-        return axios.post('https://sneaks-shop-backend.onrender.com/createinvoicelink')
+    static async createInvoiceLink(): Promise<AxiosResponse<Invoice>> {
+        return axios.post<Invoice>('https://sneaks-shop-backend.onrender.com/createinvoicelink')
     }
 }

@@ -1,6 +1,6 @@
 export interface IProduct {
     id: string,
-    image: string[],
+    images: string[],
     name: string,
     price: number,
     sizes: {size: string}[]
@@ -9,7 +9,7 @@ export interface IProduct {
 
 export interface IProductInCart {
     id: string,
-    image: string[],
+    images: string[],
     name: string,
     price: number,
     choosenSize: number,

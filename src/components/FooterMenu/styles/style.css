@@ -5,19 +5,22 @@
   justify-content: center;
   justify-content: space-around;
   align-items: center;
+  margin: 10px;
   position: fixed;
   bottom: 0;
-  background-color: #f6f5f8;
-  border-radius: 50px;
-  margin: 10px;
-  transition: all, 0.3s, all, 0.3s;
-  box-shadow: 0px 15px 35px rgba(157, 157, 157, 0.4196078431);
+  background-color: #1c1b1d;
+  transition: all, 0.8s, all, 0.8s;
+  border-radius: 40px;
   z-index: 30;
 }
 .footermenu .footermenu_link {
-  transform: scale(0.9);
+  transform: scale(0.7);
   transition: all, 0.3s, all, 0.3s;
 }
 .footermenu .footermenu_link:active {
-  transform: scale(0.9);
+  transform: scale(0.6);
+}
+
+.hidden {
+  transform: translate(0px, 150px);
 }/*# sourceMappingURL=style.css.map */

@@ -1,8 +1,4 @@
 @charset "UTF-8";
-@font-face {
-  font-family: "Apple medium";
-  src: url("./fonts/SFProDisplay-Regular.woff"), url("./fonts/SFProDisplay-Regular.woff2");
-}
 /* Начало обнуляющего стиля */
 * {
   padding: 0;
@@ -76,11 +72,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Конец обнуляющего стиля */
+/*
+// Обычный 
+font-family: 'Futura PT Book';
+// Как медиум
+font-family: 'Futura PT Demi';
+// Тонкий, узкий
+font-family: 'Futura PT Cond Book';
+font-family: 'Futura PT medium';
+*/
 body {
   width: 100%;
   min-height: 100%;
-  font-family: "Apple medium";
   font-size: 15px;
   overflow-x: hidden;
+  font-family: "Futura PT Book";
   background-color: #fff;
 }/*# sourceMappingURL=App.css.map */

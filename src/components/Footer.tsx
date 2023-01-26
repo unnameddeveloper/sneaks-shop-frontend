@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
     <div className="footer">
-      <a href='https://t.me/fullstackdevpitt' className="signature">By @fullstackdevpitt. 2023</a>
+      <a href='https://t.me/fullstackdevpitt' className="signature">Made by @fullstackdevpitt. 2023</a>
     </div>
     </>
   );

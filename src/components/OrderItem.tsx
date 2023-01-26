@@ -15,7 +15,7 @@ const OrderItem = ({ product, date, shipdate, orderstatus, choosensize, orderpri
         </div>
         <div className="orderstatus"><span>Статус:</span><span>{orderstatus}</span></div>
         <div className="cartitem">
-        <img src={product.image[0]} alt='' className="cartitem_image"></img>
+        <img src={product.images[0]} alt='' className="cartitem_image"></img>
             <div className="item_info">
                 <div className="cartitem_name item_info_field">{product.name}</div>
                 <div className="cartitem_choosensize item_info_field">Размер: {choosensize}</div>

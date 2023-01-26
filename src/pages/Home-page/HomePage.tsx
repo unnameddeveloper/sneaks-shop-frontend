@@ -11,7 +11,6 @@ import AOS from 'aos'
 
 
 const HomePage: FC = () => {
-  // const [addedItems, setAddedItem] = useState([])
   const { store } = useContext(Context)
 
   useEffect(() => {
@@ -23,6 +22,16 @@ const HomePage: FC = () => {
     AOS.init()
   })
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        store.setFooterMenu(true)
+      } else {
+        store.setFooterMenu(false)
+      }
+    })
+  }, [store])
+
   const scrollUp = () => {
     var target = document.getElementById("filtertarget");
     var targetPosition = target.getBoundingClientRect();
@@ -33,17 +42,31 @@ const HomePage: FC = () => {
       behavior: 'smooth'});
   }
 
+  const scrollDown = () => {
+    var target = document.getElementById("username_vidget");
+    var targetPosition = target.getBoundingClientRect();
+    var offsetPosition = targetPosition.top + window.pageYOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      left: 0,
+      behavior: 'smooth'});
+  }
+
+
   return (
     <>
-    <div className="homediv">
+    <div className="homediv" data-aos="fade-up" data-aos-duration="600">
         <div className="companyname">SNEAKS STORE</div>
-        <div className="svg-loader">
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 226.8 227" xmlSpace="preserve">
-          <path className="st0" d="M0,112.8L89.8 202.6 176.8 115.5 135.9 74.6 88.2 122.1 78.9 112.8 117.2 74.5 122.5 79.8 122.5 55.2 98.1 55.4 102.2 59.4 47.4 114.2 85.8 152.4 134.5 103.7 143.9 112.9 86.8 170 29.5 113.5 111.6 31.4 194.7 113.1 97.7 210.5 114.2 227 226.8 113.5 112.8 0 z"></path>
+        <div className="extratitle">Жизнь. Спорт. Кроссовки</div>
+        <div className="line"></div>
+        <div className="check" onClick={scrollDown}>
+          <svg width="23" height="23" fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+            <path d="m21 21-4.35-4.35"></path>
           </svg>
         </div>
     </div>
-    <div className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Привет! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
+    <div id="username_vidget" className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Привет! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
     <div className="vidgets">
       <div className="marketing_vidget" data-aos="fade-right" data-aos-duration="600">
         <img src="https://storage.yandexcloud.net/sneaks-shop-bucket/sneaks-image/shoes.png" alt="img"/>
