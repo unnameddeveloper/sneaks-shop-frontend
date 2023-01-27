@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const CartItem = ({ product, onAdd }) => {
+const FavoriteItem = ({ product }) => {
   const [productName, setProductName] = useState('')
   const navigate = useNavigate()
-
-  const onAddHandler = () => {
-    onAdd(product)
-  } 
 
   const trimSentence = (sentence: any) => {
     return sentence.substring(0, 17) + "...";
@@ -32,8 +28,8 @@ const CartItem = ({ product, onAdd }) => {
 
   return (
     <>
-    <div className="cartitem" key={product.id}>
-      <label><input onClick={onAddHandler}  type="checkbox" id={product.id}/><span data-type="circlespan"></span></label>
+    <div className="favoriteitem" key={product.id}>
+      <label><input type="checkbox" id={product.id}/><span data-type="circlespan"></span></label>
       <img onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}} src={product.images[0]} alt='' className="cartitem_image"></img>
       <div className="item_info" onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}}>
         <div className="cartitem_name item_info_field">{productName}</div>
@@ -46,4 +42,4 @@ const CartItem = ({ product, onAdd }) => {
   );
 }
 
-export default CartItem
+export default FavoriteItem

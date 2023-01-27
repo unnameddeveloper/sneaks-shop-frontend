@@ -5,6 +5,7 @@ import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import { IProduct } from '../../types/types';
 import { observer } from 'mobx-react-lite';
+import { Keyboard } from 'react-native-web'
 import Item from '../../components/Item';
 import { Context } from '../../index';
 import './styles/style.css';
@@ -53,7 +54,7 @@ const CatalogPage: FC = () => {
               <div className="welcome">Поиск <span>🔍</span></div>
               <div className="inputtitle">Найдите, то что всегда хотели</div>
               <div className="inputfilter">
-                <svg width="23" height="23" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg onClick={() => Keyboard?.dismiss()} width="23" height="23" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
                   <path d="m21 21-4.35-4.35"></path>
                 </svg>

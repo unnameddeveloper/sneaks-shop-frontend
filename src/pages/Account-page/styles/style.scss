@@ -14,6 +14,9 @@ $transition: all, 0.3s, all, 0.3s;
 $transition2: all, 0.1s, all, 0.1s;
 $color_1: #80a8ff;
 $color_2: #4680ff;
+$green: #e5fd60;
+$blue: #2466ff;
+$black: #1c1b1d;
 
 
 .accountpage {
@@ -36,16 +39,18 @@ $color_2: #4680ff;
             height: 80px;
             border-radius: 50%;
             overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.405);
+            background-color: $green;
             margin: 0px auto;
         }
         .emptyphoto {
-            color: #4680ff;
+            color: $blue;
             font-size: 30px;
             background: $bg;
             text-align: center;
-            padding-top: 23px;
+            padding-top: 25px;
             transition: $transition;
+            border: 1px solid $blue;
+            background: $green;
             &:active {
                 transform: scale(0.95);
                 background-color: #cedeff80;
@@ -56,7 +61,7 @@ $color_2: #4680ff;
             height: 100%;
             padding-top: 12px;
             font-size: 20px;
-            color: #000;
+            color: $blue;
             text-align: center;
         }
     }
@@ -70,7 +75,7 @@ $color_2: #4680ff;
         .menu_name {
             width: 100%;
             height: 20px;
-            color: #9fbdffc9;
+            color: rgba(0, 0, 0, 0.207);
             padding-left: 14px;
             margin-top: 10px;
             display: flex;
@@ -85,7 +90,7 @@ $color_2: #4680ff;
                     transform: scale(0.8);
                 }
                 &:last-child {
-                    color: $color_2;
+                    color: $blue;
                     transition: $transition;
                     transform: translate(0px, -130px);
                     margin-right: 10px;
@@ -117,13 +122,14 @@ $color_2: #4680ff;
             display: flex;
             justify-content: space-between;
             width: 100%;
-            height: 40px;
+            height: 45px;
             padding-left: 15px;
             padding-right: 15px;
-            padding-top: 10px;
+            padding-top: 14px;
             border-bottom: 1px solid #e6e6e68c;
             color: $color_2;
             transition: $transition;
+            font-size: 16px;
             &:last-child {
                 border-bottom: 0px solid #e6e6e68c;
                 border-radius: 0px 0px 20px 20px;
@@ -132,22 +138,24 @@ $color_2: #4680ff;
                 border-radius: 20px 20px 0px 0px;
             }
             &:active {
-                background-color: #cedeff80;
+                background-color: rgba(0, 0, 0, 0.12);
             }
             span {
                 margin-right: 15px;
             }
             .addbutn {
-                background-color: #cedeff80;
+                background-color: $green;
+                border: 1px solid $blue;
                 min-width: 80px;
-                height: 20px;
+                height: 25px;
                 border-radius: 40px;
                 text-align: center;
-                font-size: 12px;
+                font-size: 14px;
                 padding-left: 10px;
                 padding-right: 10px;
-                padding-top: 3px;
+                padding-top: 5px;
                 transition: $transition;
+                transform: translate(0px, -5px);
             }
             input {
                 min-width: 100px;
@@ -172,8 +180,9 @@ $color_2: #4680ff;
                     text-align: center;
                     padding-top: 4px;
                     border-radius: 30px;
-                    background-color: #cedeff80;
+                    background-color: $green;
                     transform: translate(0px, -3px);
+                    border: 1px solid $blue;
                 }
             }
         }

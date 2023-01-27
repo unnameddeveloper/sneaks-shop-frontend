@@ -54,7 +54,7 @@ font-family: 'Futura PT Cond Extra';
         font-size: 16px;
         text-align: center;
         z-index: 20;
-        margin-top: 260px;
+        margin-top: 20px;
     }
     .line {
         width: 100%;
@@ -81,7 +81,7 @@ font-family: 'Futura PT Cond Extra';
         font-size: 15px;
         border-radius: 50%;
         margin: 0px auto;
-        background: #000000a9;
+        background: #000000c8;
         text-align: center;
         transition: $transition;
         font-family: 'Futura PT medium';
@@ -90,7 +90,8 @@ font-family: 'Futura PT Cond Extra';
         align-items: center;
         color: #fff;
         z-index: 20;
-        margin-top: 30px;
+        margin-top: 200px;
+        margin-bottom: 100px;
         &:active {
             transform: scale(0.9);
         }

@@ -20,8 +20,30 @@ const AccountPage: FC = () => {
   useEffect(() => {
     if (loading) {
       store.setFooterMenu(false)
+    } else {
+      store.setFooterMenu(true)
+    }
+    if (window.pageYOffset > -50) {
+      store.setFooterMenu(true)
+    }
+    return () => {
+      if (loading) {
+        store.setFooterMenu(false)
+      } else {
+        store.setFooterMenu(true)
+      }
+      if (window.pageYOffset > -50) {
+        store.setFooterMenu(true)
+      }
     }
   }, [loading, store])
+
+  useEffect(() => {
+
+    return () => {
+
+    }
+  }, [])
 
   // Для редактирования данных
   useEffect(() => {
@@ -49,7 +71,7 @@ const AccountPage: FC = () => {
               {edit ? (
               <span onClick={async () => {setEdit(false); await SendNewData()}}><svg width="24" height="24" fill="#80a8ff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m18.598 2.874.178-.178a1.45 1.45 0 0 1 2.049 2.05l-.179.177a1.8 1.8 0 0 1-.07 2.47L8.224 19.746a.6.6 0 0 1-.28.157l-4.8 1.2a.599.599 0 0 1-.727-.727l1.2-4.8a.6.6 0 0 1 .157-.278l11.57-11.57a.6.6 0 0 0-.77.067l-3.95 3.951a.6.6 0 0 1-.85-.85l3.953-3.95a1.8 1.8 0 0 1 2.472-.07 1.8 1.8 0 0 1 2.398 0Z"></path></svg>Готово</span>
               ) : (
-              <span onClick={() => setEdit(true)}><svg width="24" height="24" fill="#80a8ff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m18.598 2.874.178-.178a1.45 1.45 0 0 1 2.049 2.05l-.179.177a1.8 1.8 0 0 1-.07 2.47L8.224 19.746a.6.6 0 0 1-.28.157l-4.8 1.2a.599.599 0 0 1-.727-.727l1.2-4.8a.6.6 0 0 1 .157-.278l11.57-11.57a.6.6 0 0 0-.77.067l-3.95 3.951a.6.6 0 0 1-.85-.85l3.953-3.95a1.8 1.8 0 0 1 2.472-.07 1.8 1.8 0 0 1 2.398 0Z"></path></svg>Изм.</span>
+              <span onClick={() => setEdit(true)}><svg width="24" height="24" fill="#2466ff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m18.598 2.874.178-.178a1.45 1.45 0 0 1 2.049 2.05l-.179.177a1.8 1.8 0 0 1-.07 2.47L8.224 19.746a.6.6 0 0 1-.28.157l-4.8 1.2a.599.599 0 0 1-.727-.727l1.2-4.8a.6.6 0 0 1 .157-.278l11.57-11.57a.6.6 0 0 0-.77.067l-3.95 3.951a.6.6 0 0 1-.85-.85l3.953-3.95a1.8 1.8 0 0 1 2.472-.07 1.8 1.8 0 0 1 2.398 0Z"></path></svg>Изм.</span>
               )}
             </div>
             <div className="account_info">

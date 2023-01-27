@@ -14,17 +14,18 @@ $black: #1c1b1d;
 
 .footermenu {
     width: 95%;
-    height: 50px;
+    height: 60px;
     display: flex;
     justify-content: center;
     justify-content: space-around;
     align-items: center;
     margin: 10px;
+    margin-bottom: 5px;
     position: fixed;
     bottom: 0;
     background-color: $black;
     transition: $transition2;
-    border-radius: 40px;
+    border-radius: 30px;
     z-index: 30;
     .footermenu_link {
         transform: scale(0.7);
