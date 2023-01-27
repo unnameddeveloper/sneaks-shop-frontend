@@ -20,30 +20,9 @@ const AccountPage: FC = () => {
   useEffect(() => {
     if (loading) {
       store.setFooterMenu(false)
-    } else {
-      store.setFooterMenu(true)
-    }
-    if (window.pageYOffset > -50) {
-      store.setFooterMenu(true)
-    }
-    return () => {
-      if (loading) {
-        store.setFooterMenu(false)
-      } else {
-        store.setFooterMenu(true)
-      }
-      if (window.pageYOffset > -50) {
-        store.setFooterMenu(true)
-      }
-    }
+      tg.MainButton.hide()
+    } 
   }, [loading, store])
-
-  useEffect(() => {
-
-    return () => {
-
-    }
-  }, [])
 
   // Для редактирования данных
   useEffect(() => {

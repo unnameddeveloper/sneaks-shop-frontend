@@ -1,26 +1,14 @@
-import { FC, useContext, useEffect, useState } from 'react';
 import FavoriteItem from '../../components/FavoriteItem';
+import { ItemArray } from '../../assets/productArr';
+import { FC, useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
 import './styles/style.css';
-import { ItemArray } from '../../assets/productArr';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
-
-  useEffect(() => {
-    if (window.pageYOffset > -50) {
-      store.setFooterMenu(true)
-    }
-    return () => {
-      if (window.pageYOffset > -50) {
-        store.setFooterMenu(true)
-      }
-    }
-  }, [store])
-  
 
   return (
     <>
@@ -32,7 +20,6 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="favoriteItems">
-          <FavoriteItem product={ItemArray[0]}/>
           {!user?.favoriteCart ? <div className='empty'><div>В избранных пусто</div></div> : (<>{user?.favoriteCart.map(elem => <FavoriteItem product={elem}/>)}</>)}
         </div>
       </div>

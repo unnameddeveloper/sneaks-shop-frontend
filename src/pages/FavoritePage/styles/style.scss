@@ -31,8 +31,8 @@ $black: #1c1b1d;
         width: 100%;
         min-height: 200px;
         .empty {
-            width: 95%;
-            height: 60px;
+            width: 100%;
+            height: 200px;
             padding: 20px;
             margin: 0px auto;
             display: flex;
@@ -41,17 +41,8 @@ $black: #1c1b1d;
             align-items: center;
             border-radius: 20px;
             margin-top: 20px;
-            color: $color_1;
+            color: $black;
             text-align: center;
-            background-color: $bg;
-            div {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            svg {
-                display: inline-block;
-                margin: 0px auto;
-            }
         }
         .favoriteitem {
             width: 100%;
@@ -61,56 +52,17 @@ $black: #1c1b1d;
             padding: 20px;
             padding-left: 20px;
             display: flex;
-            label {
-              display: block;
-              width: 20px;
-              height: 100%;
-              display: flex;
-              justify-content: center;
-              justify-content: space-between;
-              align-items: center;
-              input {
-                position: absolute;
-                display: inline-block;
-                left: -9999px;
-                &:checked + span[data-type="circlespan"] {
-                  &::before {
-                    opacity: 1;
-                  }
-              }
-              }
-              span[data-type="circlespan"] {
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: 1px solid $black;
-                &::before {
-                  content: '';
-                  position: absolute;
-                  width: 15px;
-                  height: 15px;
-                  border-radius: 50%;
-                  background: $green;
-                  border: 1px solid $blue;
-                  transform: translate(1.5px, 1.5px);
-                  transition: $transition;
-                  opacity: 0;
-                }
-              }
-            }
             .cartitem_image {
               background-color: rgba(0, 0, 0, 0.081);
               width: 120px;
-              height: 100px;
+              height: 110px;
               border-radius: 20px;
               transform: scale(0.8) translate(0px, -15px);
-              margin-left: 20px;
             }
             .item_info {
               width: 60%;
               height: 100%;
               border-radius: 20px;
-              margin-left: 10px;
               margin-right: 10px;
               display: flex;
               flex-wrap: wrap;
@@ -119,6 +71,7 @@ $black: #1c1b1d;
               padding-top: 10px;
               padding-bottom: 10px;
               padding-left: 10px;
+              margin-left: 10px;
               .item_info_field {
                 width: 100%;
                 height: 15px;

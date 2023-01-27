@@ -1,6 +1,6 @@
 import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper'
 import React, { FC, useContext, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ItemArray } from '../../assets/productArr'
 import { tg } from '../../hooks/useTelegram';
@@ -15,6 +15,7 @@ import 'swiper/css'
 
 const HomePage: FC = () => {
   const { store } = useContext(Context)
+  const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -25,16 +26,6 @@ const HomePage: FC = () => {
   useEffect(() => {
     AOS.init()
   })
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset >= 50) {
-        store.setFooterMenu(true)
-      } else if (window.pageYOffset <= 50) {
-        store.setFooterMenu(false)
-      }
-    })
-  }, [store])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

@@ -22,6 +22,7 @@ font-family: 'Futura PT Cond Extra';
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  z-index: 100;
 }
 .homediv .companyname {
   width: 100%;

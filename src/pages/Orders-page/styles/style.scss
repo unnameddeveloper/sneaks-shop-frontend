@@ -15,6 +15,9 @@ $transition2: all, 0.1s, all, 0.1s;
 $color_1: #80a8ff;
 $color_2: #4680ff;
 $color_3: #f6f5f8;
+$green: #e5fd60;
+$blue: #2466ff;
+$black: #1c1b1d;
 
 
 .orderspage {
@@ -58,7 +61,7 @@ $color_3: #f6f5f8;
                 align-items: center;
                 justify-content: space-between;
                 .orderid {
-                    color: $color_2;
+                    color: $blue;
                 }
             }
             .deliveryinfo {
@@ -94,8 +97,9 @@ $color_3: #f6f5f8;
                         text-align: center;
                         padding-top: 7px;
                         height: 30px;
-                        background: $bg2;
-                        color: #4680ff;
+                        background: $green;
+                        border: 1px solid $blue;
+                        color: $blue;
                         border-radius: 20px;
                         margin-left: 10px;
                     }
@@ -138,7 +142,7 @@ $color_3: #f6f5f8;
                   }
                   .cartitem_choosensize {
                     margin-top: 5px;
-                    color: $color_1;
+                    color: $blue;
                   }
                   .cartitem_price {
                     font-size: 15px;

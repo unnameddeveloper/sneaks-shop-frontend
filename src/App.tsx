@@ -20,6 +20,12 @@ const App: FC = () => {
   useEffect(() => {
     tg.ready()
   }, [])
+
+  useEffect(() => {
+    if (store.isLoading) {
+      store.setFooterMenu(false)
+    }
+  }, [store])
   
   return (
     <>

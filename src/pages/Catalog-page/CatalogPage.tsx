@@ -25,14 +25,6 @@ const CatalogPage: FC = () => {
     tg?.MainButton?.hide()
   }, [])
 
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset >= 0) {
-        store.setFooterMenu(true)
-      } 
-    })
-  }, [store])
-
   return (
     <>
     <FilterModal active={filterModal} setActive={setFiltermModal}/>

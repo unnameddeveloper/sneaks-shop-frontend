@@ -40,16 +40,17 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (store.isLoading === true) {
       setLoadingModal(true)
-      store.setFooterMenu(false)
       tg.MainButton.hide()
-    } else if (user?.shoppingCart.length > 0) {
+    } 
+    if (user?.shoppingCart.length > 0) {
       tg.MainButton.show()
       tg.MainButton.setParams({
         color: "#1c1b1d",
         text_color: "#e5fd60",
         text: "Оплатить"
       })
-    } else if (user?.shoppingCart.length < 0) {
+    }
+    if (user?.shoppingCart.length < 0) {
       tg.MainButton.hide()
     }
   }, [store, user])
@@ -105,13 +106,13 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="shoppingcart_items">
-          <CartItem product={ItemArray[0]} onAdd={onAdd}></CartItem>
+          {/* <CartItem product={ItemArray[0]} onAdd={onAdd}></CartItem>
           <CartItem product={ItemArray[1]} onAdd={onAdd}></CartItem>
-          <CartItem product={ItemArray[2]} onAdd={onAdd}></CartItem>
-          {/* {!user?.shoppingCart ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem product={product}></CartItem>)}</>)} */}
+          <CartItem product={ItemArray[2]} onAdd={onAdd}></CartItem> */}
+          {!user?.shoppingCart ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onAdd={onAdd} product={product}></CartItem>)}</>)}
         </div>
       </div>
-      <div className="invoicescore">
+      <div className={!user?.shoppingCart || store.isLoading ? "invoicescore invoicescoreHide" : "invoicescore"}>
         {addedItems.length > 0 ? <div className="extrainfo">Доставка: <span data-type="invoice">+ $19</span></div> : <div className="extrainfo">Доставка: <span data-type="invoice">+ $0</span></div>}
         <div className="extrainfo">Итого: <span data-type="invoice">${totalShopCartPrice}</span></div>
       </div>

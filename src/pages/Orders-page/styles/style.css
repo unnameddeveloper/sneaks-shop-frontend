@@ -47,7 +47,7 @@
   justify-content: space-between;
 }
 .orderspage .orders_items .orderitem .orderinfo .orderid {
-  color: #4680ff;
+  color: #2466ff;
 }
 .orderspage .orders_items .orderitem .deliveryinfo {
   width: 100%;
@@ -84,8 +84,9 @@
   text-align: center;
   padding-top: 7px;
   height: 30px;
-  background: rgba(159, 189, 255, 0.2431372549);
-  color: #4680ff;
+  background: #e5fd60;
+  border: 1px solid #2466ff;
+  color: #2466ff;
   border-radius: 20px;
   margin-left: 10px;
 }
@@ -128,7 +129,7 @@
 }
 .orderspage .orders_items .orderitem .cartitem .item_info .cartitem_choosensize {
   margin-top: 5px;
-  color: #80a8ff;
+  color: #2466ff;
 }
 .orderspage .orders_items .orderitem .cartitem .item_info .cartitem_price {
   font-size: 15px;

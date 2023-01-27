@@ -29,7 +29,6 @@ const FavoriteItem = ({ product }) => {
   return (
     <>
     <div className="favoriteitem" key={product.id}>
-      <label><input type="checkbox" id={product.id}/><span data-type="circlespan"></span></label>
       <img onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}} src={product.images[0]} alt='' className="cartitem_image"></img>
       <div className="item_info" onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}}>
         <div className="cartitem_name item_info_field">{productName}</div>

@@ -5,7 +5,7 @@ import { makeAutoObservable } from 'mobx'
 export default class Store {
     isLoading = false
     username = ''
-    footerMenu = false
+    footerMenu = true
 
     constructor() {
         makeAutoObservable(this);
