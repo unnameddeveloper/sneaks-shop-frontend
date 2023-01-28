@@ -30,7 +30,7 @@ const AccountPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser("fullstackdevpitt")
+        const User = await UserSrvice.getUser(store.username)
         return setUser(User.data)
       }
       getUser()

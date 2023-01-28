@@ -69,6 +69,13 @@
   right: 0;
   margin-right: 20px;
   transform: translate(0px, -5px);
+  transition: all, 0.3s, all, 0.3s;
+}
+.itempage .itemmenu .itemname span.addtofavorite:active {
+  transform: translate(0px, -5px) scale(0.9);
+}
+.itempage .itemmenu .itemname span.addtofavorite svg {
+  transition: all, 0.3s, all, 0.3s;
 }
 .itempage .itemmenu .itemprice {
   width: 100%;

@@ -15,13 +15,11 @@ import 'swiper/css'
 
 const HomePage: FC = () => {
   const { store } = useContext(Context)
-  const location = useLocation()
   const navigate = useNavigate()
 
   useEffect(() => {
-    store.setUsername(window?.Telegram?.WebApp?.initDataUnsafe?.user?.username)
     tg.MainButton.hide()
-  }, [store])
+  }, [])
 
   useEffect(() => {
     AOS.init()
@@ -60,7 +58,7 @@ const HomePage: FC = () => {
           </svg>
         </div>
     </div>
-    <div id="username_vidget" className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Привет! @{window?.Telegram?.WebApp?.initDataUnsafe?.user?.username}</div></div>
+    <div id="username_vidget" className="username_vidget" data-aos="fade-up" data-aos-duration="600"><div className="username">Привет! @{store.username}</div></div>
     <div className="vidgets">
       <div className="vidget_h1">ПОПУЛЯРНОЕ</div>
       <div className="marketing_vidget" data-aos="fade-up" data-aos-duration="600">

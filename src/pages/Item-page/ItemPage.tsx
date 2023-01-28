@@ -21,24 +21,29 @@ const ItemPage: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentItem, setCurrentItem] = useState<boolean>(false)
 
+  // Функция добавления товара в избранное
   const addProductInFavorite = async () => {
     if (currentItem) {
-      console.log("удаляем");
-      return await onDelete(product.id)
+      await onDelete(product.id)
+      return setCurrentItem(false)
     }
-    const addedproduct: IProductInCart = {
-      id: product.id,
-      images: product.images,
-      name: product.name,
-      price: product.price,
-      choosenSize: Number(size),
-      descritpion: product.descritpion,
+    try {
+      const addedproduct: IProductInCart = {
+        id: product.id,
+        images: product.images,
+        name: product.name,
+        price: product.price,
+        choosenSize: Number(size),
+        descritpion: product.descritpion,
+      }
+      const AddedProduct = await StoreService.addProductInFavorite("fullstackdevpitt", addedproduct)
+    } catch (error) {
+      alert("Ошибка, попробуйте еще раз")
+    } finally {
+      setCurrentItem(true)
     }
-    const AddedProduct = await StoreService.addProductInFavorite("fullstackdevpitt", addedproduct)
-    console.log(AddedProduct.data)
-    window.location.reload()
-  }
 
+  }
   // Функция удаления товара из корзины
   const onDelete = async (productId: string) => {
     try {
@@ -48,10 +53,10 @@ const ItemPage: FC = () => {
       alert("Неизвестная ошибка, попробуйте еще раз")
     } finally {
       setCurrentItem(false)
-      window.location.reload()
     }
   }
 
+  // Получаем информацию о нахождении в избранном
   useEffect(() => {
     const itemId = location.pathname.split('/item/') 
     const item = user?.favoriteCart.filter(elem => elem.id === itemId[1])
@@ -70,7 +75,7 @@ const ItemPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
+        const User = await UserSrvice.getUser(store.username)
         return setUser(User.data)
       }
       getUser()

@@ -1,6 +1,4 @@
 import PaymentsService from '../services/payment-service';
-import StoreService from '../services/user-service';
-import UserService from '../services/user-service';
 import { makeAutoObservable } from 'mobx'
 
 export interface INewUserData {
@@ -14,7 +12,8 @@ export interface IGetUserData {
 
 export default class Store {
     isLoading = false
-    username = ''
+    username = "fullstackdevpitt"
+    // username = window.Telegram?.WebApp?.initDataUnsafe?.user?.username
     footerMenu = true
 
     constructor() {

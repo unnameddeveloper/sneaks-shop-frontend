@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "Apple bold";
-  src: url("./fonts/SFProDisplay-Semibold.woff"), url("./fonts/SFProDisplay-Semibold.woff2");
-}
 .orderspage {
   width: 100%;
   min-height: 100%;

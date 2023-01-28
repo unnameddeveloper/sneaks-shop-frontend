@@ -16,7 +16,7 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
+        const User = await UserSrvice.getUser(store.username)
         return setUser(User.data)
       }
       getUser()

@@ -52,6 +52,7 @@ $black: #1c1b1d;
             padding: 20px;
             padding-left: 20px;
             display: flex;
+            transition: $transition;
             .cartitem_image {
               background-color: rgba(0, 0, 0, 0.081);
               width: 120px;

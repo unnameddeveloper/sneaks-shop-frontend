@@ -39,6 +39,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all, 0.3s, all, 0.3s;
 }
 .busketpage .shoppingcart_items .cartitem label {
   display: block;
@@ -302,6 +303,8 @@
   margin: 10px;
   bottom: 0;
   margin-bottom: 80px;
+  transition: all, 0.3s, all, 0.3s;
+  transform: translate(0px, 500px);
 }
 .invoicescore .extrainfo {
   width: 100%;
@@ -323,7 +326,6 @@
   padding-top: 5px;
 }
 
-.invoicescoreHide {
-  display: none;
-  opacity: 0;
+.invoicescoreShow {
+  transform: translate(0px, 0px);
 }/*# sourceMappingURL=style.css.map */

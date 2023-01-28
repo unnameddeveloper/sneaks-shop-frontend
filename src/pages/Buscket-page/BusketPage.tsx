@@ -52,7 +52,7 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
+        const User = await UserSrvice.getUser(store.username)
         return setUser(User.data)
       }
       getUser()
@@ -127,7 +127,7 @@ const BusketPage: FC = () => {
           {user?.shoppingCart.length === 0 ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onDelete={onDelete} onAdd={onAdd} product={product}></CartItem>)}</>)}
         </div>
       </div>
-      <div className={user?.shoppingCart.length === 0 || store.isLoading ? "invoicescore invoicescoreHide" : "invoicescore"}>
+      <div className={user?.shoppingCart.length === 0 || store.isLoading ? "invoicescore" : "invoicescore invoicescoreShow"}>
         {addedItems.length > 0 ? <div className="extrainfo">Доставка: <span data-type="invoice">+ $19</span></div> : <div className="extrainfo">Доставка: <span data-type="invoice">+ $0</span></div>}
         <div className="extrainfo">Итого: <span data-type="invoice">${totalShopCartPrice}</span></div>
       </div>
