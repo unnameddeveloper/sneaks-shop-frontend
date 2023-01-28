@@ -12,8 +12,8 @@ export interface IGetUserData {
 
 export default class Store {
     isLoading = false
-    username = "fullstackdevpitt"
-    // username = window.Telegram?.WebApp?.initDataUnsafe?.user?.username
+    // username = "fullstackdevpitt"
+    username = window.Telegram?.WebApp?.initDataUnsafe?.user?.username
     footerMenu = true
 
     constructor() {
