@@ -23,8 +23,8 @@ const ItemPage: FC = () => {
     // Функция получения товара по :id 
     const itemId = location.pathname.split('/item/') 
     // Получаем товар
-    // const Product = await store.getProduct(itemId)
-    // setProduct(Product)
+    const item = ItemArray.find(item => item.id === itemId[1])
+    setProduct(item)
   }, [location])
 
   // Cостояния точек карусели
@@ -73,7 +73,7 @@ const ItemPage: FC = () => {
     <div className="itempage">
       <div className="slider">
         <Swiper navigation={true} slidesPerView={1} onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}>
-          {ItemArray[1].images.map((image) => (<SwiperSlide className='SwiperSlide'><img src={image} alt="img" className='sliderimage'></img></SwiperSlide>))}
+          {product.images.map((image) => (<SwiperSlide className='SwiperSlide'><img src={image} alt="img" className='sliderimage'></img></SwiperSlide>))}
         </Swiper>
       </div>
       <div className="itemmenu">
@@ -83,15 +83,15 @@ const ItemPage: FC = () => {
           <div className="dot dot2"></div>
           <div className="dot dot3"></div>
         </div>
-        <div className="itemname">{ItemArray[1]?.name}</div>
-        <div className="itemprice">${ItemArray[1]?.price}</div>
+        <div className="itemname">{product?.name}</div>
+        <div className="itemprice">${product?.price}</div>
         <div className="choosesize_vidget">{size ? (<>Выбран: <span>{size}</span></>) : <>Выбранный размер</>}</div>
         <div className="sizes">
           <Swiper slidesPerView={6} navigation={true}>
-            {ItemArray[1]?.sizes.map(elem => ( <SwiperSlide><label><input onChange={(e) => setSize(e.target.value)} type="radio" value={elem.size} name="radio"/><span data-span="span">{elem.size}</span></label></SwiperSlide> ))}
+            {product?.sizes.map(elem => ( <SwiperSlide><label><input onChange={(e) => setSize(e.target.value)} type="radio" value={elem.size} name="radio"/><span data-span="span">{elem.size}</span></label></SwiperSlide> ))}
           </Swiper>
         </div>
-        <div className="itemdesc">{ItemArray[1]?.descritpion}</div>        
+        <div className="itemdesc">{product?.descritpion}</div>        
       </div>
     </div>
     </>

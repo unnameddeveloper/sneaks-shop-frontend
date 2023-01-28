@@ -5,7 +5,7 @@
 .accountpage {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  padding-bottom: 100px;
 }
 .accountpage .header {
   width: 95%;
@@ -149,7 +149,8 @@
   color: #4680ff;
   border-radius: 20px;
   padding-left: 10px;
-  transform: translate(0px, -5px);
+  font-size: 14px;
+  transform: translate(0px, -7px);
 }
 .accountpage .account_menu .account_menu_filed input::-webkit-input-placeholder {
   color: rgba(128, 168, 255, 0.431372549);
