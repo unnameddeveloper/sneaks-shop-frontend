@@ -1,5 +1,7 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
+import UserSrvice from '../../services/user-service';
+import { IGetUserData } from '../../store/store';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 import { Keyboard } from 'react-native-web'
@@ -24,16 +26,28 @@ const AccountPage: FC = () => {
     } 
   }, [loading, store])
 
-  // Для редактирования данных
+  // Получаем пользователя 
   useEffect(() => {
-  }, [])
+    if (!user) {
+      const getUser = async () => {
+        const User = await UserSrvice.getUser("fullstackdevpitt")
+        return setUser(User.data)
+      }
+      getUser()
+    }
+  }, [store, user])
 
   const SendNewData = async () => {
     // Отправляем на бэкенд изменения
-    const newData = {number, mail}
-    // const SendNewData = store.sendNewData(newData)
-    alert(`Данные успешно изменены`)
-    Keyboard?.dismiss()
+    const newData = {phoneNumber: number, email: mail}
+    const updatedUser = await UserSrvice.addNewUserData(newData)
+    if (updatedUser.data) {
+      await window.location.reload()
+      await alert(`Данные успешно изменены`)
+      await Keyboard?.dismiss()
+    } else {
+      alert(`Неизвестная ошибка, попробуйте еще раз`)
+    }
   }
 
   return (

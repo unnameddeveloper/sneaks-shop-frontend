@@ -1,20 +1,21 @@
 import { FC, useContext, useEffect, useState } from 'react';
+import { IProductInCart, IUser } from '../../types/types';
 import LoadingComponent from '../../components/Loading';
-// import CartItem from '../../components/CartItem';
+import UserSrvice from '../../services/user-service';
 import CartItem from '../../components/CartItem';
+import { IGetUserData } from '../../store/store';
 import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
-import { IProductInCart, IUser } from '../../types/types';
 import { Context } from '../../index';
 import './styles/style.css';
-import { ItemArray } from '../../assets/productArr';
+import StoreService from '../../services/store-service';
 
 const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
+  const [addedItems, setAddedItem] = useState([])
   const [totalShopCartPrice, setTotalShopCartPrice] = useState(0)
   const [loadingModal, setLoadingModal] = useState<boolean>(false)
-  const [addedItems, setAddedItem] = useState([])
 
   // Считаем итоговую цену добавленных товаров
   const getTotalPrice = (products = []) => {
@@ -22,8 +23,7 @@ const BusketPage: FC = () => {
         return acc += item.price
     }, 0)
   }
-
-  // Функция добавления товара в корзину
+  // Функция добавления товара в заказ
   const onAdd = (product: IProductInCart) => {
     const alreadyAdded = addedItems.find(item => item.id === product.id)
     let newItems = []
@@ -36,6 +36,28 @@ const BusketPage: FC = () => {
     setAddedItem(newItems)
     setTotalShopCartPrice(getTotalPrice(newItems))
   }
+  // Функция удаления товара из корзины
+  const onDelete = async (productId: string) => {
+    try {
+      const deletedProduct = await StoreService.deleteProductFromCart(store.username, productId)
+      console.log(deletedProduct.data);
+    } catch (error) {
+      alert("Неизвестная ошибка, попробуйте еще раз")
+    } finally {
+      window.location.reload()
+    }
+  }
+
+  // Получаем пользователя 
+  useEffect(() => {
+    if (!user) {
+      const getUser = async () => {
+        const User = await UserSrvice.getUser(store.username)
+        return setUser(User.data)
+      }
+      getUser()
+    }
+  }, [store, user])
 
   useEffect(() => {
     if (store.isLoading === true) {
@@ -59,19 +81,19 @@ const BusketPage: FC = () => {
   useEffect(() => {
     tg.onEvent('mainButtonClicked', async () => {
       setLoadingModal(true)
-      const invoiceLink = await store.createInvoiceLink()
+      const invoiceLink = await store.createInvoiceLink(totalShopCartPrice)
       console.log("invoiceLink: " + invoiceLink);
       await tg.openInvoice(invoiceLink, async () => {})
     })
     return () => {
       tg.offEvent('mainButtonClicked', async () => {
         setLoadingModal(true)
-        const invoiceLink = await store.createInvoiceLink()
+        const invoiceLink = await store.createInvoiceLink(totalShopCartPrice)
         console.log("invoiceLink: " + invoiceLink);
         await tg.openInvoice(invoiceLink, async () => {})
       })
     }
-  }, [store])
+  }, [store, totalShopCartPrice])
 
   // Слушатель события
   useEffect(() => {
@@ -89,10 +111,6 @@ const BusketPage: FC = () => {
     }
   }, [])
 
-  useEffect(() => {
-    if (window.pageYOffset >= -50) store.setFooterMenu(true)
-  }, [store])
-
   return (
     <>
       <LoadingComponent active={loadingModal} setActive={setLoadingModal}/>
@@ -106,13 +124,10 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="shoppingcart_items">
-          {/* <CartItem product={ItemArray[0]} onAdd={onAdd}></CartItem>
-          <CartItem product={ItemArray[1]} onAdd={onAdd}></CartItem>
-          <CartItem product={ItemArray[2]} onAdd={onAdd}></CartItem> */}
-          {!user?.shoppingCart ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onAdd={onAdd} product={product}></CartItem>)}</>)}
+          {user?.shoppingCart.length === 0 ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onDelete={onDelete} onAdd={onAdd} product={product}></CartItem>)}</>)}
         </div>
       </div>
-      <div className={!user?.shoppingCart || store.isLoading ? "invoicescore invoicescoreHide" : "invoicescore"}>
+      <div className={user?.shoppingCart.length === 0 || store.isLoading ? "invoicescore invoicescoreHide" : "invoicescore"}>
         {addedItems.length > 0 ? <div className="extrainfo">Доставка: <span data-type="invoice">+ $19</span></div> : <div className="extrainfo">Доставка: <span data-type="invoice">+ $0</span></div>}
         <div className="extrainfo">Итого: <span data-type="invoice">${totalShopCartPrice}</span></div>
       </div>

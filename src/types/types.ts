@@ -12,7 +12,7 @@ export interface IProductInCart {
     images: string[],
     name: string,
     price: number,
-    choosenSize: number,
+    choosenSize?: number,
     descritpion: string,
 }
 

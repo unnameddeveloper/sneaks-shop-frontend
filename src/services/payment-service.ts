@@ -6,7 +6,7 @@ interface Invoice {
 }
 
 export default class PaymentsService {
-    static async createInvoiceLink(): Promise<AxiosResponse<Invoice>> {
-        return axios.post<Invoice>('https://sneaks-shop-backend.onrender.com/createinvoicelink')
+    static async createInvoiceLink(totalShopCartPrice: number): Promise<AxiosResponse<Invoice>> {
+        return axios.post<Invoice>('https://sneaks-shop-backend.onrender.com/createinvoicelink', { totalShopCartPrice })
     }
 }

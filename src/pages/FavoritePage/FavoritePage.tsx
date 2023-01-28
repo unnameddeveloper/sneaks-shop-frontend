@@ -1,6 +1,7 @@
+import { FC, useContext, useState, useEffect } from 'react';
 import FavoriteItem from '../../components/FavoriteItem';
-import { ItemArray } from '../../assets/productArr';
-import { FC, useContext, useState } from 'react';
+import StoreService from '../../services/store-service';
+import UserSrvice from '../../services/user-service';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
@@ -10,6 +11,29 @@ const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
 
+  // Получаем пользователя 
+  useEffect(() => {
+    if (!user) {
+      const getUser = async () => {
+        const User = await UserSrvice.getUser(store.username)
+        return setUser(User.data)
+      }
+      getUser()
+    }
+  }, [store, user])
+
+  // Функция удаления товара из корзины
+  const onDelete = async (productId: string) => {
+    try {
+      const deletedProduct = await StoreService.deleteProductFromFavorite(store.username, productId)
+      console.log(deletedProduct.data);
+    } catch (error) {
+      alert("Неизвестная ошибка, попробуйте еще раз")
+    } finally {
+      window.location.reload()
+    }
+  }
+  
   return (
     <>
       <div className="favoritepage">
@@ -20,7 +44,7 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="favoriteItems">
-          {!user?.favoriteCart ? <div className='empty'><div>В избранных пусто</div></div> : (<>{user?.favoriteCart.map(elem => <FavoriteItem product={elem}/>)}</>)}
+          {user?.favoriteCart.length === 0 ? <div className='empty'><div>В избранных пусто</div></div> : (<>{user?.favoriteCart.map(elem => <FavoriteItem onDelete={onDelete} product={elem}/>)}</>)}
         </div>
       </div>
     </>

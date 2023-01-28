@@ -60,6 +60,15 @@
   width: 100%;
   color: #000;
   font-size: 25px;
+  position: relative;
+}
+.itempage .itemmenu .itemname span.addtofavorite {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  transform: translate(0px, -5px);
 }
 .itempage .itemmenu .itemprice {
   width: 100%;

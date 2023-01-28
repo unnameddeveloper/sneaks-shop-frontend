@@ -1,7 +1,8 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import LoadingComponent from '../../components/Loading';
-import OrderItem from '../../components/OrderItem';
+import UserSrvice from '../../services/user-service';
 import { ItemArray } from '../../assets/productArr';
+import OrderItem from '../../components/OrderItem';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
@@ -12,6 +13,17 @@ const OrdersPage: FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [user, setUser] = useState<IUser>()
   const { store } = useContext(Context)
+
+  // Получаем пользователя 
+  useEffect(() => {
+    if (!user) {
+      const getUser = async () => {
+        const User = await UserSrvice.getUser("fullstackdevpitt")
+        return setUser(User.data)
+      }
+      getUser()
+    }
+  }, [store, user])
 
   useEffect(() => {
     if (loading) {

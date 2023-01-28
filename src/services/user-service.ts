@@ -1,22 +1,27 @@
 import { IProduct, IUser } from "../types/types"
 import axios, { AxiosResponse } from "axios"
+import { backendURL } from "../api/api"
 
+interface INewUserData {
+    phoneNumber: string,
+    email: string
+}
 
 export default class UserSrvice {
-    static async addNewUserData(data: any) {
+    static async addNewUserData(data: INewUserData): Promise<AxiosResponse<IUser>> {
         try {
-            return axios.post(`${process.env.REACT_APP_BAKENDURL}/addnewuserdata`, { data })
+            return axios.post<IUser>(`${backendURL}/addnewuserdata`, { data }) 
         } catch (error) {
             console.log(error)
-            return console.log(`Errot / user-service.js => addNewUserData()`)
+            console.log(`Errot / user-service.js => addNewUserData()`)
         }
     }
-    static async getUser(data: any) {
+    static async getUser(username: string): Promise<AxiosResponse<IUser>> {
         try {
-            return axios.get(`${process.env.REACT_APP_BAKENDURL}/user/${data.username}`, { data })
+            return axios.post<IUser>(`${backendURL}/getuser`, { username })
         } catch (error) {
             console.log(error)
-            return console.log(`Errot / user-service.js => getUser()`)
+            console.log(`Errot / user-service.js => getUser()`)
         }
     }
 }

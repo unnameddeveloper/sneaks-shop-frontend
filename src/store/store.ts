@@ -1,6 +1,16 @@
 import PaymentsService from '../services/payment-service';
-// import UserService from '../services/user-service';
+import StoreService from '../services/user-service';
+import UserService from '../services/user-service';
 import { makeAutoObservable } from 'mobx'
+
+export interface INewUserData {
+    phoneNumber: string,
+    email: string
+}
+
+export interface IGetUserData {
+    username: string
+}
 
 export default class Store {
     isLoading = false
@@ -23,19 +33,15 @@ export default class Store {
         this.footerMenu = type
     };
 
-    async createInvoiceLink() {
+    async createInvoiceLink(totalShopCartPrice: number) {
         this.isLoading = true
         try {
-            const invoiceLink = await PaymentsService.createInvoiceLink()
+            const invoiceLink = await PaymentsService.createInvoiceLink(totalShopCartPrice)
             return invoiceLink.data.result 
         } catch (error) {
             return console.log(error)
         } finally {
             this.isLoading = false
         }
-    }
-
-    async getUser() {
-
     }
 }
