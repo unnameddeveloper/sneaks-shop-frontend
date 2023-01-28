@@ -3,6 +3,7 @@ import LoadingComponent from '../../components/Loading';
 import UserSrvice from '../../services/user-service';
 import { ItemArray } from '../../assets/productArr';
 import OrderItem from '../../components/OrderItem';
+import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
@@ -18,7 +19,7 @@ const OrdersPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser("fullstackdevpitt")
+        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
         return setUser(User.data)
       }
       getUser()

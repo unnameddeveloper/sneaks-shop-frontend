@@ -70,7 +70,7 @@ const ItemPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser(store.username)
+        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
         return setUser(User.data)
       }
       getUser()

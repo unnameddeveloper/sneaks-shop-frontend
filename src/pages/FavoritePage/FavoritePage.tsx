@@ -2,6 +2,7 @@ import { FC, useContext, useState, useEffect } from 'react';
 import FavoriteItem from '../../components/FavoriteItem';
 import StoreService from '../../services/store-service';
 import UserSrvice from '../../services/user-service';
+import { tg } from '../../hooks/useTelegram';
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
@@ -15,7 +16,7 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (!user) {
       const getUser = async () => {
-        const User = await UserSrvice.getUser(store.username)
+        const User = await UserSrvice.getUser(tg?.initDataUnsafe?.user?.username)
         return setUser(User.data)
       }
       getUser()
