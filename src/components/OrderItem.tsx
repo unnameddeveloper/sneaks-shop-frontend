@@ -4,7 +4,7 @@ const OrderItem = ({ product, date, shipdate, orderstatus, choosensize, orderpri
 
   return (
     <>
-    <div className="orderitem" key={product.id}>
+    <div className="orderitem">
         <div className="orderinfo">
             <div className="orderdate">{date}</div>
             <div className="orderid">3211232-{product.id}</div>

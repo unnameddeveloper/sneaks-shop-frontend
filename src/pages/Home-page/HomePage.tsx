@@ -1,8 +1,8 @@
-import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper'
+import { Autoplay, Pagination, Navigation } from 'swiper'
 import React, { FC, useContext, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ItemArray } from '../../assets/productArr'
+import { useNavigate } from 'react-router-dom';
 import { tg } from '../../hooks/useTelegram';
 import Footer from '../../components/Footer';
 import { observer } from 'mobx-react-lite';

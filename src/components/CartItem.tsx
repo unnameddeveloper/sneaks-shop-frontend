@@ -36,7 +36,7 @@ const CartItem = ({ product, onAdd, onDelete }) => {
 
   return (
     <>
-    <div className="cartitem" key={product.id} >
+    <div className="cartitem" >
       <label><input onClick={onAddHandler}  type="checkbox" id={product.id}/><span data-type="circlespan"></span></label>
       <img onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}} src={product.images[0]} alt='' className="cartitem_image"></img>
       <div className="item_info" onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}}>
