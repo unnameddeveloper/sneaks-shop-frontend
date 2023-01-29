@@ -3,6 +3,7 @@ import FavoriteItem from '../../components/FavoriteItem';
 import StoreService from '../../services/store-service';
 import UserSrvice from '../../services/user-service';
 import { tg } from '../../hooks/useTelegram';
+import { Vibration } from 'react-native-web'
 import { observer } from 'mobx-react-lite';
 import { IUser } from '../../types/types';
 import { Context } from '../../index';
@@ -26,6 +27,7 @@ const BusketPage: FC = () => {
   // Функция удаления товара из корзины
   const onDelete = async (productId: string) => {
     try {
+      Vibration?.vibrate(1000)
       const deletedProduct = await StoreService.deleteProductFromFavorite(store.username, productId)
       console.log(deletedProduct.data);
     } catch (error) {
