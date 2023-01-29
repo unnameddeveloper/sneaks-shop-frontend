@@ -1,15 +1,28 @@
-import React, { FC, useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { FC, useContext, useEffect, useState } from 'react';
+import { useNavigate, useLocation, unstable_HistoryRouter } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css'
 
 const FooterMenu = ({ active, setActive }) => {
     const naigate = useNavigate()
+    const location = useLocation()
+    const [backButton, setBackButton] = useState<boolean>(false)
+    const [path, setPath] = useState<string>()
     const { store } = useContext(Context)
+
+    useEffect(() => {
+        if (location.pathname.includes("/item/")) {
+            setBackButton(true)
+            setPath('catalog')
+        } else {
+            setBackButton(false)
+        }
+    }, [location])
 
     return (
         <>
         <div className={store.footerMenu ? "footermenu" : "footermenu hidden"}>
+            <div onClick={() => {naigate(`/${path}`)}} className={backButton ? "footer_backbutton" : "footer_backbutton hide"}>Back</div>
             <div onClick={() => {window.scrollTo(0, 0); naigate('/')}} className="footermenu_link">
                 <svg width="30" height="30" fill="none" stroke="#e5fd60" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
                     <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
