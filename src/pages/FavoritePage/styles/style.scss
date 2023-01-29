@@ -53,6 +53,20 @@ $black: #1c1b1d;
             padding-left: 20px;
             display: flex;
             transition: $transition;
+            transform: translate(0px, 0px);
+            animation-name: anim;
+            animation-duration: 0.3s;
+            @keyframes anim {
+              0% {
+                transform: translate(0px, 100px);
+              }
+              50% {
+                transform: translate(0px, 50px);
+              }
+              100% {
+                transform: translate(0px, 0px);
+              }
+            }
             .cartitem_image {
               background-color: rgba(0, 0, 0, 0.081);
               width: 120px;

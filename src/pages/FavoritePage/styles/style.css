@@ -43,6 +43,33 @@
   padding-left: 20px;
   display: flex;
   transition: all, 0.3s, all, 0.3s;
+  transform: translate(0px, 0px);
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+}
+@-webkit-keyframes anim {
+  0% {
+    transform: translate(0px, 100px);
+  }
+  50% {
+    transform: translate(0px, 50px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+@keyframes anim {
+  0% {
+    transform: translate(0px, 100px);
+  }
+  50% {
+    transform: translate(0px, 50px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
 }
 .favoritepage .favoriteItems .favoriteitem .cartitem_image {
   background-color: rgba(0, 0, 0, 0.081);

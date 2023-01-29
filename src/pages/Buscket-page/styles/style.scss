@@ -49,6 +49,19 @@ $black: #1c1b1d;
         justify-content: space-between;
         align-items: center;
         transition: $transition;
+        animation-name: anim;
+        animation-duration: 0.3s;
+        @keyframes anim {
+          0% {
+            transform: translate(0px, 100px);
+          }
+          50% {
+            transform: translate(0px, 50px);
+          }
+          100% {
+            transform: translate(0px, 0px);
+          }
+        }        
         label {
           display: block;
           width: 20px;
