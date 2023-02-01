@@ -62,37 +62,15 @@ const BusketPage: FC = () => {
   useEffect(() => {
     if (store.isLoading === true) {
       setLoadingModal(true)
-      tg.MainButton.hide()
     } 
-    if (user?.shoppingCart.length > 0) {
-      tg.MainButton.show()
-      tg.MainButton.setParams({
-        color: "#1c1b1d",
-        text_color: "#e5fd60",
-        text: "Оплатить"
-      })
-    }
-    if (user?.shoppingCart.length < 0) {
-      tg.MainButton.hide()
-    }
-  }, [store, user])
+  }, [store])
 
   // Функция при нажатии 
   useEffect(() => {
-    tg.onEvent('mainButtonClicked', async () => {
-      setLoadingModal(true)
-      const invoiceLink = await store.createInvoiceLink(totalShopCartPrice)
-      console.log("invoiceLink: " + invoiceLink);
-      await tg.openInvoice(invoiceLink, async () => {})
-    })
-    return () => {
-      tg.offEvent('mainButtonClicked', async () => {
-        setLoadingModal(true)
-        const invoiceLink = await store.createInvoiceLink(totalShopCartPrice)
-        console.log("invoiceLink: " + invoiceLink);
-        await tg.openInvoice(invoiceLink, async () => {})
-      })
-    }
+    // setLoadingModal(true)
+    //   const invoiceLink = await store.createInvoiceLink(totalShopCartPrice)
+    //   console.log("invoiceLink: " + invoiceLink);
+    //   await tg.openInvoice(invoiceLink, async () => {})
   }, [store, totalShopCartPrice])
 
   // Слушатель события
