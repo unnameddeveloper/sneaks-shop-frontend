@@ -22,7 +22,12 @@ const FooterMenu = ({ active, setActive }) => {
     return (
         <>
         <div className={store.footerMenu ? "footermenu" : "footermenu hidden"}>
-            <div onClick={() => {naigate(`/${path}`)}} className={backButton ? "footer_backbutton" : "footer_backbutton hide"}>Back</div>
+            <div onClick={() => {naigate(`/${path}`)}} className={backButton ? "footer_backbutton" : "footer_backbutton hide"}>
+                <svg width="30" height="30" fill="none" stroke="#e5fd60" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.438 18.75 4.688 12l6.75-6.75"></path>
+                    <path d="M5.625 12h13.688"></path>
+                </svg>
+            </div>
             <div onClick={() => {window.scrollTo(0, 0); naigate('/')}} className="footermenu_link">
                 <svg width="30" height="30" fill="none" stroke="#e5fd60" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
                     <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>

@@ -25,9 +25,15 @@
   left: 0;
   transform: translate(15px, -60px);
   transition: all, 0.3s, all, 0.3s;
+  padding-top: 4px;
 }
 .footermenu .footer_backbutton:active {
   transform: translate(15px, -60px) scale(0.9);
+}
+.footermenu .footer_backbutton svg {
+  transition: all, 0.3s, all, 0.3s;
+  display: inline-block;
+  transform: scale(0.8);
 }
 .footermenu .hide {
   opacity: 0;

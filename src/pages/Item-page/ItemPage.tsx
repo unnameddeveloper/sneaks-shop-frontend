@@ -17,6 +17,7 @@ const ItemPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
   const [size, setSize] = useState<string>()
+  const [styles, setStyles] = useState<string>("addtobasketbutton")
   const [product, setProduct] = useState<IProduct>()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentItem, setCurrentItem] = useState<boolean>(false)
@@ -36,7 +37,7 @@ const ItemPage: FC = () => {
         choosenSize: Number(size),
         descritpion: product.descritpion,
       }
-      const AddedProduct = await StoreService.addProductInFavorite("fullstackdevpitt", addedproduct)
+      const AddedProduct = await StoreService.addProductInFavorite(store.username, addedproduct)
     } catch (error) {
       alert("Ошибка, попробуйте еще раз")
     } finally {
@@ -54,6 +55,20 @@ const ItemPage: FC = () => {
     } finally {
       setCurrentItem(false)
     }
+  }
+  // Функция при нажатии кнопки при добавлении в корзину
+  const addProductInCart = async () => {
+    const addedproduct: IProductInCart = {
+      id: product.id,
+      images: product.images,
+      name: product.name,
+      price: product.price,
+      choosenSize: Number(size),
+      descritpion: product.descritpion,
+    }
+    const AddedProduct = await StoreService.addProductInCart(store.username, addedproduct)
+    setStyles("addtobasketbutton show success")
+    return console.log(AddedProduct.data)
   }
 
   // Получаем информацию о нахождении в избранном
@@ -101,51 +116,12 @@ const ItemPage: FC = () => {
     }
   }, [currentIndex]);
 
-  // Когда выбрали размер показываем кнопку
+  // Когда выбрали размер показываем кнопку добавиления в корзину
   useEffect(() => {
-    if (!size) {
-      tg.MainButton.hide()
-    } else {
-      tg.MainButton.show();
-      tg.MainButton.setParams({
-          text: `В корзину`,
-          color: "#000",
-          text_color: "#e5fd60"
-      })
-    }
+    if (size) {
+      setStyles("addtobasketbutton show")
+    } 
   }, [size])
-
-  // Функция при нажатии 
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', async () => {
-      const addedproduct: IProductInCart = {
-        id: product.id,
-        images: product.images,
-        name: product.name,
-        price: product.price,
-        choosenSize: Number(size),
-        descritpion: product.descritpion,
-      }
-      const AddedProduct = await StoreService.addProductInCart("fullstackdevpitt", addedproduct)
-      console.log(AddedProduct.data)
-      await navigate('/busket')
-    })
-    return () => {
-      tg.offEvent('mainButtonClicked', async () => {
-        const addedproduct: IProductInCart = {
-          id: product.id,
-          images: product.images,
-          name: product.name,
-          price: product.price,
-          choosenSize: Number(size),
-          descritpion: product.descritpion,
-        }
-        const AddedProduct = await StoreService.addProductInCart("fullstackdevpitt", addedproduct)
-        console.log(AddedProduct.data)
-        await navigate('/busket')
-      })
-    }
-  }, [product, navigate, size])
 
   return (
     <>
@@ -179,6 +155,18 @@ const ItemPage: FC = () => {
         </div>
         <div className="itemdesc">{product?.descritpion}</div>        
       </div>
+    </div>
+    <div className={styles} onClick={addProductInCart}>
+      {styles.includes("success") ? (
+        <>
+        <span>Добавлено</span>
+        <svg width="25" height="25" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Zm-4.962-3.787a.937.937 0 0 0-1.35.027l-4.342 5.531-2.616-2.617a.937.937 0 0 0-1.325 1.325l3.308 3.309a.939.939 0 0 0 1.348-.026l4.99-6.237a.938.938 0 0 0-.012-1.313h-.002Z"></path>
+        </svg>
+        </>
+      ) : (
+        <span>В корзину</span>
+      )}
     </div>
     </>
   );
