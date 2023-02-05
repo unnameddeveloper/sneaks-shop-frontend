@@ -179,6 +179,19 @@ $black: #1c1b1d;
             background-size: contain;
             padding-left: 10px;
             transform: scale(0.8);
+            animation-name: anim;
+            animation-duration: 0.3s;
+            transition: $transition;
+            opacity: 1;
+            margin-top: 20px;
+            @keyframes anim {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
           }
         }
       }
