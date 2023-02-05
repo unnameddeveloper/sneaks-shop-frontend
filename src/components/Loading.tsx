@@ -1,7 +1,5 @@
-import { IProduct, IProductInCart } from '../types/types';
-import { Routes, Route, Link } from 'react-router-dom';
 import '../pages/Buscket-page/styles/style.css'
-import React, { FC, useState } from 'react';
+import React from 'react';
 
 const LoadingComponent = ({active, setActive}) => {
   return (

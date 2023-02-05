@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React from 'react';
 
 const OrderItem = ({ product, date, shipdate, orderstatus, choosensize, orderprice }) => {
 

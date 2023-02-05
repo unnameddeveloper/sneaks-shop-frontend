@@ -149,7 +149,7 @@ const ItemPage: FC = () => {
         </div>
         <div className="itemname">
           <span>{product?.name}</span>
-          <span className='addtofavorite' onClick={(e) => {e.preventDefault(); addProductInFavorite()}}>
+          <span className='addtofavorite' onClick={(e) => {addProductInFavorite()}}>
             <svg width="25" height="25" fill={currentItem ? "#000" : "#fff"} stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
@@ -165,7 +165,7 @@ const ItemPage: FC = () => {
         <div className="itemdesc">{product?.descritpion}</div>        
       </div>
     </div>
-    <div className={styles} onClick={(e) => {e.preventDefault(); addProductInCart()}}>
+    <div className={styles} onClick={(e) => {addProductInCart()}}>
       {styles.includes("success") ? (
         <>
         <span>Добавлено</span>
