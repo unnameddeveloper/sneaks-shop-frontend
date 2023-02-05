@@ -188,7 +188,6 @@
           animation-duration: 0.3s;
   transition: all, 0.3s, all, 0.3s;
   opacity: 1;
-  margin-top: 20px;
 }
 @keyframes anim {
   0% {

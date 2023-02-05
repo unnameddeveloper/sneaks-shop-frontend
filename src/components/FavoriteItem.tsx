@@ -33,13 +33,13 @@ const FavoriteItem = ({ product, onDelete }) => {
   return (
     <>
     <div className="favoriteitem">
-      <img onClick={(e) => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}} src={product.images[0]} alt='' className="cartitem_image"></img>
-      <div className="item_info" onClick={(e) => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}}>
+      <img onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}} src={product.images[0]} alt='' className="cartitem_image"></img>
+      <div className="item_info" onClick={() => {navigate(`/item/${product.id}`); window.scrollTo(0, 0)}}>
         <div className="cartitem_name item_info_field">{productName}</div>
         <div className="cartitem_choosensize item_info_field">Размер: {!product.choosenSize ?  <>Не выбран</> : <>{product.choosenSize}</>}</div>
         <div className="cartitem_price item_info_field">${product.price}</div>
       </div>
-      <div className="deleteitem_field" onClick={(e) => {onDeleteHandler()}}><div className="deleteitem_button"></div></div>      
+      <div className="deleteitem_field" onClick={onDeleteHandler}><div className="deleteitem_button"></div></div>      
     </div>
     </>
   );
