@@ -51,6 +51,44 @@
 .footermenu .footermenu_link:active {
   transform: scale(0.6);
 }
+.footermenu .footermenu_link:nth-child(4) {
+  position: relative;
+}
+.footermenu .footermenu_link:nth-child(4) .cartcount {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #e5fd60;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 2.5px;
+  transform: translate(10px, -10px);
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+.footermenu .footermenu_link:nth-child(4) .cartcount.cartcountShow {
+  opacity: 1;
+  visibility: visible;
+}
+.footermenu .footermenu_link:nth-child(5) {
+  position: relative;
+}
+.footermenu .footermenu_link:nth-child(5) .favoritecount {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #e5fd60;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 2.5px;
+  transform: translate(10px, -10px);
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 0;
+}
+.footermenu .footermenu_link:nth-child(5) .favoritecount.favoritecountShow {
+  opacity: 1;
+}
 
 .hidden {
   transform: translate(0px, 150px);

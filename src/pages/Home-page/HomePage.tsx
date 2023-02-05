@@ -30,7 +30,7 @@ const HomePage: FC = () => {
       var scrolled = window.pageYOffset;
       var parallax = document.getElementById('parallax');
       if (parallax) {
-        parallax.style.backgroundPositionY = (scrolled * 0.2) + "px";
+        parallax.style.backgroundPositionY = (scrolled * 0.1) + "px";
       }
     });
   })

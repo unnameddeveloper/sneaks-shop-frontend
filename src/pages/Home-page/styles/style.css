@@ -23,6 +23,28 @@ font-family: 'Futura PT Cond Extra';
   background-size: cover;
   overflow: hidden;
   z-index: 100;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+}
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .homediv .companyname {
   width: 100%;

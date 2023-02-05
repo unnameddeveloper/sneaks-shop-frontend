@@ -28,6 +28,18 @@ $black: #1c1b1d;
       position: relative;
       margin-top: 10px;
       margin-bottom: 10px;
+      animation-name: anim;
+      animation-duration: 0.4s;
+      transition: $transition;
+      opacity: 1;
+      @keyframes anim {
+          0% {
+              opacity: 0;
+          }
+          100% {
+              opacity: 1;
+          }
+      }      
       svg {
         display: inline-block;
         margin-left: 10px;
@@ -170,13 +182,40 @@ $black: #1c1b1d;
           }
         }
       }
-      div {
+      .empty {
         width: 100%;
         height: 200px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
+        text-align: center;
+        animation-name: anim;
+        animation-duration: 0.3s;
+        transition: $transition;
+        opacity: 1;
+        margin-top: 20px;
+        @keyframes anim {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+      }
+      svg {
+        display: block;
+        margin: 0px auto;
+        margin-top: 200px;
+        animation-name: anim;
+        animation-duration: 0.4s;
+        transition: $transition;
+        opacity: 1;
+        @keyframes anim {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }           
       }
     }
 }

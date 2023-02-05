@@ -2,6 +2,8 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import { useNavigate, useLocation, unstable_HistoryRouter } from 'react-router-dom';
 import { Context } from '../../index';
 import './styles/style.css'
+import { IUser } from '../../types/types';
+import UserSrvice from '../../services/user-service';
 
 const FooterMenu = ({ active, setActive }) => {
     const naigate = useNavigate()
@@ -9,6 +11,7 @@ const FooterMenu = ({ active, setActive }) => {
     const [backButton, setBackButton] = useState<boolean>(false)
     const [path, setPath] = useState<string>()
     const { store } = useContext(Context)
+    const [user, setUser] = useState<IUser>()
 
     useEffect(() => {
         if (location.pathname.includes("/item/")) {
@@ -18,6 +21,19 @@ const FooterMenu = ({ active, setActive }) => {
             setBackButton(false)
         }
     }, [location])
+
+    // Получаем пользователя 
+    useEffect(() => {
+        if (!user) {
+            setInterval(() => {
+                const getUser = async () => {
+                    const User = await UserSrvice.getUser(store.username)
+                    return setUser(User.data)
+                }
+                getUser()
+            }, 1000)
+        }
+    }, [store, user])
 
     return (
         <>
@@ -50,11 +66,13 @@ const FooterMenu = ({ active, setActive }) => {
                     <path d="M3 6h18"></path>
                     <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
+                <div className={!user?.shoppingCart.length ? "cartcount" : "cartcount cartcountShow"}>{user?.shoppingCart.length}</div>
             </div>
             <div onClick={() => {window.scrollTo(0, 0); naigate('/favorite')}} className="footermenu_link">
                 <svg width="30" height="30" fill="none" stroke="#e5fd60" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
+                <div className={!user?.favoriteCart.length ? "favoritecount" : "favoritecount favoritecountShow"}>{user?.favoriteCart.length}</div>
             </div>
             <div onClick={() => {window.scrollTo(0, 0); naigate('/account')}}  className="footermenu_link">
                 <svg width="30" height="30" fill="#e5fd60" stroke="#e5fd60" strokeWidth="1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">

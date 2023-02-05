@@ -33,7 +33,8 @@ const BusketPage: FC = () => {
     } catch (error) {
       alert("Неизвестная ошибка, попробуйте еще раз")
     } finally {
-      window.location.reload()
+      const User = await UserSrvice.getUser(store.username)
+      return setUser(User.data)
     }
   }
   
@@ -47,7 +48,17 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="favoriteItems">
-          {user?.favoriteCart.length === 0 ? <div className='empty'><div>В избранных пусто</div></div> : (<>{user?.favoriteCart.map(elem => <FavoriteItem onDelete={onDelete} product={elem}/>)}</>)}
+          {user?.favoriteCart.length === 0 ? 
+          <>
+            <svg width="46" height="46" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"></path>
+              <path d="m16.5 12.5-2-1"></path>
+              <path d="m9 11.5-2 1"></path>
+              <path d="M15.5 17.5s-1-2-3.5-2-3.5 2-3.5 2"></path>
+            </svg>
+            <div className='empty'><div>В избранных пусто</div></div>
+          </> : 
+          <>{user?.favoriteCart.map(elem => <FavoriteItem onDelete={onDelete} product={elem}/>)}</>}
         </div>
       </div>
     </>

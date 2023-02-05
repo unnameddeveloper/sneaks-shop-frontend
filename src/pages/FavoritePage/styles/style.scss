@@ -1,6 +1,6 @@
 $bg: #f6f5f8;
 $box-shadow: 0px 5px 15px rgba(157, 157, 157, 0.426);
-$transition: all, 0.3s, all, 0.3s;
+$transition: all, 0.3s, ease-in-out, all, 0.3s, ease-in-out;
 $transition2: all, 0.1s, all, 0.1s;
 $color_1: #80a8ff;
 $color_2: #bdd2ff;
@@ -13,6 +13,18 @@ $black: #1c1b1d;
 .favoritepage {
     width: 100%;
     min-height: 200px;
+    animation-name: anim;
+    animation-duration: 0.4s;
+    transition: $transition;
+    opacity: 1;
+    @keyframes anim {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }    
     .header {
         width: 100%;
         margin-top: 27px;
@@ -22,6 +34,22 @@ $black: #1c1b1d;
         display: flex;
         justify-content: center;
         align-items: center;
+        animation-name: anim;
+        animation-duration: 0.4s;
+        transform: translate(0px, 0px);
+        transition: $transition;
+        opacity: 1;
+        @keyframes anim {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
         svg {
             display: inline-block;
             margin-left: 10px;
@@ -32,8 +60,7 @@ $black: #1c1b1d;
         min-height: 200px;
         .empty {
             width: 100%;
-            height: 200px;
-            padding: 20px;
+            height: 20px;
             margin: 0px auto;
             display: flex;
             flex-wrap: wrap;
@@ -43,6 +70,35 @@ $black: #1c1b1d;
             margin-top: 20px;
             color: $black;
             text-align: center;
+            animation-name: anim;
+            animation-duration: 0.4s;
+            transition: $transition;
+            opacity: 1;
+            @keyframes anim {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+        svg {
+          display: block;
+          margin: 0px auto;
+          margin-top: 200px;
+          animation-name: anim;
+          animation-duration: 0.4s;
+          transition: $transition;
+          opacity: 1;
+          @keyframes anim {
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+          }   
         }
         .favoriteitem {
             width: 100%;

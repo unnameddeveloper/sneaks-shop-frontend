@@ -14,6 +14,7 @@ const BusketPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
   const [addedItems, setAddedItem] = useState([])
+  const [stylez, setStylez] = useState("invoicescore")
   const [totalShopCartPrice, setTotalShopCartPrice] = useState(0)
   const [loadingModal, setLoadingModal] = useState<boolean>(false)
 
@@ -25,26 +26,28 @@ const BusketPage: FC = () => {
   }
   // Функция добавления товара в заказ
   const onAdd = (product: IProductInCart) => {
-    const alreadyAdded = addedItems.find(item => item.id === product.id)
+    const alreadyAdded = addedItems.find(item => item === product)
     let newItems = []
     if (alreadyAdded) {
-        newItems = addedItems.filter(item => item.id !== product.id)
+        newItems = addedItems.filter(item => item !== product)
     } else {
-        newItems = [...addedItems, product]
+      newItems = [...addedItems, product]
     }
 
     setAddedItem(newItems)
     setTotalShopCartPrice(getTotalPrice(newItems))
   }
   // Функция удаления товара из корзины
-  const onDelete = async (productId: string) => {
+  const onDelete = async (productId: string, choosenSize: string) => {
     try {
-      const deletedProduct = await StoreService.deleteProductFromCart(store.username, productId)
+      const deletedProduct = await StoreService.deleteProductFromCart(store.username, productId, choosenSize)
       console.log(deletedProduct.data);
     } catch (error) {
       alert("Неизвестная ошибка, попробуйте еще раз")
     } finally {
-      window.location.reload()
+      const User = await UserSrvice.getUser(store.username)
+      setStylez("invoicescore")
+      return setUser(User.data)
     }
   }
 
@@ -89,6 +92,13 @@ const BusketPage: FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (user?.shoppingCart.length > 0) {
+      setStylez("invoicescore invoicescoreShow")
+    }
+  }, [user])
+  
+
   return (
     <>
       <LoadingComponent active={loadingModal} setActive={setLoadingModal}/>
@@ -102,10 +112,23 @@ const BusketPage: FC = () => {
           </svg>
         </div>
         <div className="shoppingcart_items">
-          {user?.shoppingCart.length === 0 ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onDelete={onDelete} onAdd={onAdd} product={product}></CartItem>)}</>)}
+          {/* {user?.shoppingCart.length === 0 ? <div><div>В корзине пусто</div></div> : (<>{user?.shoppingCart.map((product) => <CartItem onDelete={onDelete} onAdd={onAdd} product={product}></CartItem>)}</>)} */}
+          {user?.shoppingCart.length === 0 ? 
+          <>
+            <svg width="46" height="46" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"></path>
+              <path d="m16.5 12.5-2-1"></path>
+              <path d="m9 11.5-2 1"></path>
+              <path d="M15.5 17.5s-1-2-3.5-2-3.5 2-3.5 2"></path>
+            </svg>
+            <div className='empty'>В корзине пусто</div>
+          </> : 
+          <>
+            {user?.shoppingCart.map(product => <CartItem onDelete={onDelete} onAdd={onAdd} product={product}></CartItem>)}
+          </>}
         </div>
       </div>
-      <div className={user?.shoppingCart.length === 0 || store.isLoading ? "invoicescore" : "invoicescore invoicescoreShow"}>
+      <div className={stylez}>
         {addedItems.length > 0 ? <div className="extrainfo">Доставка: <span data-type="invoice">+ $19</span></div> : <div className="extrainfo">Доставка: <span data-type="invoice">+ $0</span></div>}
         <div className="extrainfo">Итого: <span data-type="invoice">${totalShopCartPrice}</span></div>
       </div>

@@ -10,7 +10,7 @@ const CartItem = ({ product, onAdd, onDelete }) => {
   } 
 
   const onDeleteHandler = () => {
-    onDelete(product?.id)
+    onDelete(product?.id, product?.choosenSize)
   } 
 
   const trimSentence = (sentence: any) => {

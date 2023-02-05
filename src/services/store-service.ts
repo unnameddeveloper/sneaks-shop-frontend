@@ -12,9 +12,9 @@ export default class StoreService {
             console.log(`Error / store-service.js => addProductInCart()`)
         }
     }
-    static async deleteProductFromCart(username: string, productId: string) {
+    static async deleteProductFromCart(username: string, productId: string, choosenSize: string) {
         try {
-            return axios.post(`${backendURL}/deletefromcart`, { username, productId })
+            return axios.post(`${backendURL}/deletefromcart`, { username, productId, choosenSize })
         } catch (error) {
             console.log(error)
             console.log(`Error / store-service.js => deleteProductFromCart()`)

@@ -62,6 +62,44 @@ $black: #1c1b1d;
         &:active {
             transform: scale(0.6);
         }
+        &:nth-child(4) {
+            position: relative;
+            .cartcount  {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: $green;
+                border-radius: 50%;
+                text-align: center;
+                padding-top: 2.5px;
+                transform: translate(10px, -10px);
+                transition: $transition;
+                opacity: 0;
+                visibility: hidden;
+            }
+            .cartcount.cartcountShow {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &:nth-child(5) {
+            position: relative;
+            .favoritecount  {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: $green;
+                border-radius: 50%;
+                text-align: center;
+                padding-top: 2.5px;
+                transform: translate(10px, -10px);
+                transition: $transition;
+                opacity: 0;
+            }
+            .favoritecount.favoritecountShow {
+                opacity: 1;
+            }
+        }
     }
 
 }

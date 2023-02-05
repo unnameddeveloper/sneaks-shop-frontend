@@ -12,6 +12,7 @@ font-family: 'Futura PT Cond Extra';
 .catalogpage {
   width: 100%;
   min-height: 200px;
+  transition: all, 1s, all, 1s;
 }
 .catalogpage .cataloglist {
   width: 95%;
@@ -35,6 +36,28 @@ font-family: 'Futura PT Cond Extra';
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 10px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+}
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .catalogpage .cataloglist .catalogfilter .catalogh1 {
   width: 100%;
@@ -201,6 +224,26 @@ font-family: 'Futura PT Cond Extra';
   background-color: rgba(116, 116, 116, 0.5568627451);
   z-index: 10;
   transition: all, 1s, all, 1s;
+  -webkit-animation-name: animbg;
+          animation-name: animbg;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+@-webkit-keyframes animbg {
+  0% {
+    background-color: rgba(116, 116, 116, 0);
+  }
+  100% {
+    background-color: rgba(116, 116, 116, 0.5568627451);
+  }
+}
+@keyframes animbg {
+  0% {
+    background-color: rgba(116, 116, 116, 0);
+  }
+  100% {
+    background-color: rgba(116, 116, 116, 0.5568627451);
+  }
 }
 
 .filtermodalwindow {
@@ -209,10 +252,11 @@ font-family: 'Futura PT Cond Extra';
   z-index: 40;
   position: fixed;
   bottom: 0;
-  transition: all, 0.3s, all, 0.3s;
+  transition: all, 1s, all, 1s;
   background: #fff;
   border-radius: 20px 20px 0px 0px;
   border: 1px solid #b7b7b7;
+  transform: translate(0px, 0px);
 }
 .filtermodalwindow .filtermodal_menu {
   width: 100%;
@@ -364,5 +408,6 @@ font-family: 'Futura PT Cond Extra';
 
 .filtermodalwindow.hidden {
   transform: translate(0px, 800px);
+  transition: all, 1.5s, all, 1.5s;
   height: 0;
 }/*# sourceMappingURL=style.css.map */

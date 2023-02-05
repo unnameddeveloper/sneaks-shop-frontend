@@ -17,6 +17,7 @@ const ItemPage: FC = () => {
   const { store } = useContext(Context)
   const [user, setUser] = useState<IUser>()
   const [size, setSize] = useState<string>()
+  const [checked, setChecked] = useState<boolean>()
   const [styles, setStyles] = useState<string>("addtobasketbutton")
   const [product, setProduct] = useState<IProduct>()
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -25,8 +26,8 @@ const ItemPage: FC = () => {
   // Функция добавления товара в избранное
   const addProductInFavorite = async () => {
     if (currentItem) {
-      await onDelete(product.id)
-      return setCurrentItem(false)
+      setCurrentItem(false)
+      return await onDelete(product.id) 
     }
     try {
       const addedproduct: IProductInCart = {
@@ -37,12 +38,12 @@ const ItemPage: FC = () => {
         choosenSize: Number(size),
         descritpion: product.descritpion,
       }
-      const AddedProduct = await StoreService.addProductInFavorite(store.username, addedproduct)
+      setCurrentItem(true)
+      return await StoreService.addProductInFavorite(store.username, addedproduct)
     } catch (error) {
       alert("Ошибка, попробуйте еще раз")
-    } finally {
-      setCurrentItem(true)
-    }
+      setCurrentItem(false)
+    } 
 
   }
   // Функция удаления товара из корзины
@@ -58,6 +59,9 @@ const ItemPage: FC = () => {
   }
   // Функция при нажатии кнопки при добавлении в корзину
   const addProductInCart = async () => {
+    if (!size) {
+      return alert("Выберите размер")
+    }
     const addedproduct: IProductInCart = {
       id: product.id,
       images: product.images,
@@ -68,7 +72,11 @@ const ItemPage: FC = () => {
     }
     const AddedProduct = await StoreService.addProductInCart(store.username, addedproduct)
     setStyles("addtobasketbutton show success")
-    return console.log(AddedProduct.data)
+    setChecked(false)
+    console.log(AddedProduct.data)
+    setTimeout(async () => {
+      setStyles("addtobasketbutton")
+    }, 2000)
   }
 
   // Получаем информацию о нахождении в избранном
@@ -141,16 +149,16 @@ const ItemPage: FC = () => {
         <div className="itemname">
           <span>{product?.name}</span>
           <span className='addtofavorite' onClick={addProductInFavorite}>
-            <svg width="25" height="25" fill={currentItem ? "#000" : "none"} stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
+            <svg width="25" height="25" fill={currentItem ? "#000" : "#fff"} stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2e5fd60/svg">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
           </span>
         </div>
         <div className="itemprice">${product?.price}</div>
-        <div className="choosesize_vidget">{size ? (<>Выбран: <span>{size}</span></>) : <>Выбранный размер</>}</div>
+        <div className="choosesize_vidget">{size ? (<>Выбран: <span>{size}</span></>) : <>Размер не выбран</>}</div>
         <div className="sizes">
           <Swiper slidesPerView={6} navigation={true}>
-            {product?.sizes.map(elem => ( <SwiperSlide><label><input onChange={(e) => setSize(e.target.value)} type="radio" value={elem.size} name="radio"/><span data-span="span">{elem.size}</span></label></SwiperSlide> ))}
+            {product?.sizes.map(elem => ( <SwiperSlide><label><input checked={checked} onChange={(e) => setSize(e.target.value)} type="radio" value={elem.size} name="radio"/><span data-span="span">{elem.size}</span></label></SwiperSlide> ))}
           </Swiper>
         </div>
         <div className="itemdesc">{product?.descritpion}</div>        

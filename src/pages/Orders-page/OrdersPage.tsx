@@ -43,8 +43,8 @@ const OrdersPage: FC = () => {
           </svg>
         </div>
         <div className="orders_items">
-          <OrderItem orderprice={299} choosensize={37} orderstatus={"Собирается"} shipdate={"27 января"} date={"Заказ от 10 января 2023"} product={ItemArray[0]}></OrderItem>
-          <OrderItem orderprice={699} choosensize={43} orderstatus={"Передан курьеру"} shipdate={"6 февраля"} date={"Заказ от 3 января 2023"} product={ItemArray[1]}></OrderItem>
+          <OrderItem orderprice={299} choosensize={37} orderstatus={"Собирается"} shipdate={"28 февраля"} date={"Заказ от 14 января 2023"} product={ItemArray[0]}></OrderItem>
+          <OrderItem orderprice={699} choosensize={43} orderstatus={"Передан курьеру"} shipdate={"12 февраля"} date={"Заказ от 3 января 2023"} product={ItemArray[1]}></OrderItem>
           {/* {!user?.orders ? <div><div>Нету заказов</div></div> : (<>{user?.orders.map((order) => <OrderItem product={order}></OrderItem>)}</>)} */}
         </div>
       </div>

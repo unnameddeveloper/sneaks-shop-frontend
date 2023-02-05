@@ -36,6 +36,18 @@ font-family: 'Futura PT Cond Extra';
     background-size: cover;
     overflow: hidden;
     z-index: 100;
+    animation-name: anim;
+    animation-duration: 0.8s;
+    transition: $transition;
+    opacity: 1;
+    @keyframes anim {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }   
     .companyname {
         width: 100%;
         height: 40px;

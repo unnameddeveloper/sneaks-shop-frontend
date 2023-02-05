@@ -7,6 +7,28 @@
   justify-content: center;
   flex-wrap: wrap;
   background-color: #f6f5f8;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+}
+@-webkit-keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .itempage .slider {
   width: 100%;
@@ -33,6 +55,20 @@
   box-shadow: -15px 15px 40px rgba(255, 255, 255, 0.721);
   padding: 20px;
   padding-top: 40px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+}
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .itempage .itemmenu .dots {
   width: 100%;
@@ -174,8 +210,36 @@
 }
 .addtobasketbutton.success span {
   margin-right: 10px;
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
   transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+  transform: scale(1);
+}
+@keyframes anim {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .addtobasketbutton.success svg {
+  -webkit-animation-name: anim;
+          animation-name: anim;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
   transition: all, 0.3s, all, 0.3s;
+  opacity: 1;
+  transform: scale(1);
+}
+@keyframes anim {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=style.css.map */
