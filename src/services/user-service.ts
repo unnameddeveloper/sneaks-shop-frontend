@@ -3,14 +3,15 @@ import axios, { AxiosResponse } from "axios"
 import { backendURL } from "../api/api"
 
 interface INewUserData {
+    username: string,
     phoneNumber: string,
     email: string
 }
 
 export default class UserSrvice {
-    static async addNewUserData(data: INewUserData): Promise<AxiosResponse<IUser>> {
+    static async addNewUserData(data: INewUserData): Promise<AxiosResponse> {
         try {
-            return axios.post<IUser>(`${backendURL}/addnewuserdata`, { data }) 
+            return axios.post(`${backendURL}/addnewuserdata`, { data }) 
         } catch (error) {
             console.log(error)
             console.log(`Errot / user-service.js => addNewUserData()`)

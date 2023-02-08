@@ -37,16 +37,20 @@ const AccountPage: FC = () => {
   }, [store, user])
 
   const SendNewData = async () => {
-    // Отправляем на бэкенд изменения
-    const newData = {phoneNumber: number, email: mail}
-    const updatedUser = await UserSrvice.addNewUserData(newData)
-    if (updatedUser.data) {
-      const User = await UserSrvice.getUser(store.username)
-      setUser(User.data)
-      await Keyboard?.dismiss()
-      return alert(`Данные успешно изменены`)
-    } else {
-      return alert(`Неизвестная ошибка, попробуйте еще раз`)
+    try {
+      // Отправляем на бэкенд изменения
+      const newData = {phoneNumber: number, email: mail, username: store.username}
+      const updatedUser = await UserSrvice.addNewUserData(newData)
+      if (updatedUser.data) {
+        const User = await UserSrvice.getUser(store.username)
+        setUser(User.data)
+        console.log(User.data);
+        await Keyboard?.dismiss()
+        return alert(`Данные успешно изменены`)
+      }
+    } catch (error) {
+      alert(`Неизвестная ошибка, попробуйте еще раз`)
+      return console.log(error);
     }
   }
 
