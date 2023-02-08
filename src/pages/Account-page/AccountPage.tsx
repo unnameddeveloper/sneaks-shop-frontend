@@ -22,7 +22,6 @@ const AccountPage: FC = () => {
   useEffect(() => {
     if (loading) {
       store.setFooterMenu(false)
-      tg.MainButton.hide()
     } 
   }, [loading, store])
 
@@ -42,11 +41,12 @@ const AccountPage: FC = () => {
     const newData = {phoneNumber: number, email: mail}
     const updatedUser = await UserSrvice.addNewUserData(newData)
     if (updatedUser.data) {
-      await window.location.reload()
-      await alert(`Данные успешно изменены`)
+      const User = await UserSrvice.getUser(store.username)
+      setUser(User.data)
       await Keyboard?.dismiss()
+      return alert(`Данные успешно изменены`)
     } else {
-      alert(`Неизвестная ошибка, попробуйте еще раз`)
+      return alert(`Неизвестная ошибка, попробуйте еще раз`)
     }
   }
 
